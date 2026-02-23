@@ -3,6 +3,10 @@ using System.Collections;
 
 public class LeafPull : MonoBehaviour
 {
+    [Header("Idle Breeze (Always On)")]
+    [SerializeField] private float idleSwayAngle = 4f;
+    [SerializeField] private float idleSwaySpeed = 0.8f;
+
     [Header("Wiggle Settings")]
     [SerializeField] private float wiggleAngle = 15f;
     [SerializeField] private float wiggleSpeed = 20f;
@@ -23,9 +27,37 @@ public class LeafPull : MonoBehaviour
     private float driftDirection;
     private float spinDirection;
 
+    private float idleTimeOffset; // makes each leaf sway differently
+
     private void Awake()
     {
         sr = GetComponent<SpriteRenderer>();
+        baseRotationZ = transform.eulerAngles.z;
+
+        // random phase so all leaves don't move in sync
+        idleTimeOffset = Random.Range(0f, 100f);
+    }
+
+    private void Update()
+    {
+        if (!isTriggered)
+        {
+            IdleSway();
+        }
+    }
+
+    private void IdleSway()
+    {
+        // smooth easing sway (organic breeze)
+        float t = Time.time * idleSwaySpeed + idleTimeOffset;
+
+        // layered sine for more natural motion
+        float sway =
+            Mathf.Sin(t) * 0.7f +
+            Mathf.Sin(t * 0.5f) * 0.3f;
+
+        float angle = baseRotationZ + sway * idleSwayAngle;
+        transform.rotation = Quaternion.Euler(0f, 0f, angle);
     }
 
     private void OnMouseDown()
@@ -34,7 +66,7 @@ public class LeafPull : MonoBehaviour
         {
             isTriggered = true;
 
-            // store current rotation so wiggle is relative
+            // capture current rotation so wiggle continues smoothly
             baseRotationZ = transform.eulerAngles.z;
 
             // random fall behaviour
@@ -47,36 +79,42 @@ public class LeafPull : MonoBehaviour
 
     private IEnumerator WiggleFallFade()
     {
-        // --- WIGGLE RELATIVE TO CURRENT ROTATION ---
+        // --- STRONG WIGGLE BEFORE RELEASE ---
         float timer = 0f;
         while (timer < wiggleDuration)
         {
-            float angleOffset = Mathf.Sin(timer * wiggleSpeed) * wiggleAngle;
+            float normalized = timer / wiggleDuration;
+
+            // easing envelope (strong in middle, soft start/end)
+            float envelope = Mathf.Sin(normalized * Mathf.PI);
+
+            float angleOffset =
+                Mathf.Sin(timer * wiggleSpeed) *
+                wiggleAngle *
+                envelope;
+
             transform.rotation = Quaternion.Euler(0f, 0f, baseRotationZ + angleOffset);
 
             timer += Time.deltaTime;
             yield return null;
         }
 
-        // return smoothly to original rotation
-        transform.rotation = Quaternion.Euler(0f, 0f, baseRotationZ);
-
-        // --- FALL + RANDOM DRIFT + RANDOM SPIN + FADE ---
+        // --- FALL + DRIFT + SPIN + FADE ---
         float fadeTimer = 0f;
         Color startColor = sr.color;
 
         while (fadeTimer < fadeDuration)
         {
-            // fall down
+            // fall
             transform.position += Vector3.down * fallSpeed * Time.deltaTime;
 
-            // drift sideways
+            // sideways drift
             transform.position += Vector3.right * driftDirection * horizontalDrift * Time.deltaTime;
 
-            // spin while falling
+            // spin
             transform.Rotate(0f, 0f, spinDirection * rotationSpeed * Time.deltaTime);
 
-            // fade out
+            // fade
             float alpha = Mathf.Lerp(1f, 0f, fadeTimer / fadeDuration);
             sr.color = new Color(startColor.r, startColor.g, startColor.b, alpha);
 
