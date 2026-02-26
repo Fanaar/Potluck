@@ -1,5 +1,25 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-4606778311719743857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Fmod Project Potluck!/Potluck!FMOD/Build/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 639077208943866488
+  FileSizes:
+  - Name: Desktop
+    Value: 32224
+  Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12,11 +32,65 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
-  EditorBanks: []
-  EditorEvents: []
+  EditorBanks:
+  - {fileID: 3300735741327959133}
+  - {fileID: -4606778311719743857}
+  EditorEvents:
+  - {fileID: 5411239346622795646}
   EditorParameters: []
-  MasterBanks: []
-  StringsBanks: []
+  MasterBanks:
+  - {fileID: -4606778311719743857}
+  StringsBanks:
+  - {fileID: 3300735741327959133}
   cacheVersion: 131858
-  cacheTime: 0
-  SerializableEventsDict: []
+  cacheTime: 639077208943887421
+  SerializableEventsDict:
+  - key: event:/Test
+    index: 0
+--- !u!114 &3300735741327959133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: Fmod Project Potluck!/Potluck!FMOD/Build/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 639077208943887421
+  FileSizes:
+  - Name: Desktop
+    Value: 766
+  Exists: 1
+--- !u!114 &5411239346622795646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Test
+  m_EditorClassIdentifier: 
+  Path: event:/Test
+  Guid:
+    Data1: 679977956
+    Data2: 1332314192
+    Data3: 1553887648
+    Data4: 1002505011
+  Banks:
+  - {fileID: -4606778311719743857}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 3030
