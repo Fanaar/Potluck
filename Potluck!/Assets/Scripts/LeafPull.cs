@@ -3,11 +3,17 @@ using System.Collections;
 
 public class LeafPull : MonoBehaviour
 {
-    [Header("Idle Breeze (Always On)")]
+    [Header("Idle Breeze")]
     [SerializeField] private float idleSwayAngle = 4f;
     [SerializeField] private float idleSwaySpeed = 0.8f;
 
-    [Header("Wiggle Settings")]
+    [Header("Hover Reaction")]
+    [SerializeField] private float hoverSwayMultiplier = 2f;
+    [SerializeField] private float hoverSpeedMultiplier = 1.5f;
+    [SerializeField] private float hoverBlendSpeed = 3f;
+    [SerializeField] private float hoverStabilityTime = 0.05f;
+
+    [Header("Click Wiggle")]
     [SerializeField] private float wiggleAngle = 15f;
     [SerializeField] private float wiggleSpeed = 20f;
     [SerializeField] private float wiggleDuration = 0.5f;
@@ -21,43 +27,103 @@ public class LeafPull : MonoBehaviour
     [SerializeField] private float fadeDuration = 1f;
 
     private bool isTriggered = false;
+    private bool isHovering = false;
+
     private SpriteRenderer sr;
 
     private float baseRotationZ;
     private float driftDirection;
     private float spinDirection;
+    private float idleTimeOffset;
 
-    private float idleTimeOffset; // makes each leaf sway differently
+    private float hoverInfluence = 0f;
 
     private void Awake()
     {
         sr = GetComponent<SpriteRenderer>();
         baseRotationZ = transform.eulerAngles.z;
 
-        // random phase so all leaves don't move in sync
         idleTimeOffset = Random.Range(0f, 100f);
+
+        // Prevent Z-fighting when leaves overlap
+        transform.position += Vector3.forward * Random.Range(-0.01f, 0.01f);
     }
 
     private void Update()
     {
         if (!isTriggered)
         {
+            UpdateHoverBlend();
             IdleSway();
         }
     }
 
+    private void UpdateHoverBlend()
+    {
+        float target = isHovering ? 1f : 0f;
+
+        hoverInfluence = Mathf.Lerp(
+            hoverInfluence,
+            target,
+            Time.deltaTime * hoverBlendSpeed
+        );
+    }
+
     private void IdleSway()
     {
-        // smooth easing sway (organic breeze)
-        float t = Time.time * idleSwaySpeed + idleTimeOffset;
+        float blendedAngle = Mathf.Lerp(
+            idleSwayAngle,
+            idleSwayAngle * hoverSwayMultiplier,
+            hoverInfluence
+        );
 
-        // layered sine for more natural motion
+        float blendedSpeed = Mathf.Lerp(
+            idleSwaySpeed,
+            idleSwaySpeed * hoverSpeedMultiplier,
+            hoverInfluence
+        );
+
+        float t = Time.time * blendedSpeed + idleTimeOffset;
+
         float sway =
             Mathf.Sin(t) * 0.7f +
             Mathf.Sin(t * 0.5f) * 0.3f;
 
-        float angle = baseRotationZ + sway * idleSwayAngle;
-        transform.rotation = Quaternion.Euler(0f, 0f, angle);
+        float finalAngle = baseRotationZ + sway * blendedAngle;
+        transform.rotation = Quaternion.Euler(0f, 0f, finalAngle);
+    }
+
+    private void OnMouseEnter()
+    {
+        if (!isTriggered)
+        {
+            isHovering = true;
+        }
+    }
+
+    private void OnMouseExit()
+    {
+        if (!isTriggered)
+        {
+            StartCoroutine(HoverExitDelay());
+        }
+    }
+
+    private IEnumerator HoverExitDelay()
+    {
+        yield return new WaitForSeconds(hoverStabilityTime);
+
+        if (!IsMouseOverThis())
+        {
+            isHovering = false;
+        }
+    }
+
+    private bool IsMouseOverThis()
+    {
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Collider2D col = GetComponent<Collider2D>();
+        return col != null && col.OverlapPoint(mousePos);
     }
 
     private void OnMouseDown()
@@ -66,10 +132,8 @@ public class LeafPull : MonoBehaviour
         {
             isTriggered = true;
 
-            // capture current rotation so wiggle continues smoothly
             baseRotationZ = transform.eulerAngles.z;
 
-            // random fall behaviour
             driftDirection = Random.Range(-1f, 1f);
             spinDirection = Random.Range(-1f, 1f);
 
@@ -79,13 +143,11 @@ public class LeafPull : MonoBehaviour
 
     private IEnumerator WiggleFallFade()
     {
-        // --- STRONG WIGGLE BEFORE RELEASE ---
         float timer = 0f;
+
         while (timer < wiggleDuration)
         {
             float normalized = timer / wiggleDuration;
-
-            // easing envelope (strong in middle, soft start/end)
             float envelope = Mathf.Sin(normalized * Mathf.PI);
 
             float angleOffset =
@@ -99,22 +161,15 @@ public class LeafPull : MonoBehaviour
             yield return null;
         }
 
-        // --- FALL + DRIFT + SPIN + FADE ---
         float fadeTimer = 0f;
         Color startColor = sr.color;
 
         while (fadeTimer < fadeDuration)
         {
-            // fall
             transform.position += Vector3.down * fallSpeed * Time.deltaTime;
-
-            // sideways drift
             transform.position += Vector3.right * driftDirection * horizontalDrift * Time.deltaTime;
-
-            // spin
             transform.Rotate(0f, 0f, spinDirection * rotationSpeed * Time.deltaTime);
 
-            // fade
             float alpha = Mathf.Lerp(1f, 0f, fadeTimer / fadeDuration);
             sr.color = new Color(startColor.r, startColor.g, startColor.b, alpha);
 
