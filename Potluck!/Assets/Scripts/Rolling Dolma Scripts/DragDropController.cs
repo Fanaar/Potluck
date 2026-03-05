@@ -30,9 +30,22 @@ public class DragDropController : MonoBehaviour
     {
         draggedObject = obj;
     }
-
+    public bool IsDragging()
+    {
+        return draggedObject != null;
+    }
     void StopDrag()
     {
+        if (draggedObject == null) return;
+
+        // check of stuffing een geldige drop heeft gedaan
+        StuffingDrop drop = draggedObject.GetComponent<StuffingDrop>();
+
+        if (drop != null && drop.wasPlaced == false)
+        {
+            Destroy(draggedObject);
+        }
+
         draggedObject = null;
     }
 }

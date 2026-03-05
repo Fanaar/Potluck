@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95d36887b549f864f9a58d983580e855, type: 3}
   m_Name: Question_1
   m_EditorClassIdentifier: 
-  questionStart: 
-  questionEnding: 
-  motherResponse: 
+  questionStart: Hoe voelde jij je...
+  questionEnding: toen je Irak moest verlaten?
+  motherResponse: Het was moeilijk... maar we hadden elkaar.

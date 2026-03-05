@@ -83,4 +83,9 @@ public class DolmaRollController : MonoBehaviour
             Debug.Log("Question: " + QuestionSystem.Instance.GetFullQuestion());
         }
     }
+
+    public void AddStuffing()
+    {
+        sr.sprite = leafWithStuffing;
+    }
 }
