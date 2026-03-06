@@ -33,6 +33,8 @@ public class UIQuestionPreview : MonoBehaviour
 
     public void ShowStarts(string[] questionStarts)
     {
+        if (questionLocked) return;
+
         starts = questionStarts;
         currentIndex = 0;
         questionText.gameObject.SetActive(true);

@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class DolmaRollController : MonoBehaviour
 {
@@ -10,11 +11,17 @@ public class DolmaRollController : MonoBehaviour
 
     public GameObject dolmaPickupObject;
 
+    [Header("Fade Settings")]
+    public float fadeDuration = 0.15f;
+    public AnimationCurve fadeCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
+
     SpriteRenderer sr;
 
     Vector2 dragStart;
 
     int state = 0;
+
+    bool isTransitioning = false;
 
     void Start()
     {
@@ -23,14 +30,14 @@ public class DolmaRollController : MonoBehaviour
 
     void OnMouseDown()
     {
-        if (state >= 4) return;
+        if (state >= 4 || isTransitioning) return;
 
         dragStart = Input.mousePosition;
     }
 
     void OnMouseUp()
     {
-        if (state >= 4) return;
+        if (state >= 4 || isTransitioning) return;
 
         Vector2 dragEnd = Input.mousePosition;
         Vector2 dir = dragEnd - dragStart;
@@ -40,12 +47,12 @@ public class DolmaRollController : MonoBehaviour
 
     void ProcessDrag(Vector2 dir)
     {
-        if (state >= 4) return;
+        if (state >= 4 || isTransitioning) return;
 
         // bottom fold
         if (state == 0 && dir.y > 50)
         {
-            sr.sprite = bottomFolded;
+            StartCoroutine(CrossFadeToSprite(bottomFolded));
             state = 1;
 
             UIQuestionPreview.Instance.ShowEndingChoices(
@@ -61,7 +68,7 @@ public class DolmaRollController : MonoBehaviour
         {
             if (dir.x < -50)
             {
-                sr.sprite = leftFolded;
+                StartCoroutine(CrossFadeToSprite(leftFolded));
                 state = 2;
 
                 QuestionSystem.Instance.SetQuestionEnding(
@@ -69,13 +76,13 @@ public class DolmaRollController : MonoBehaviour
                 );
 
                 UIQuestionPreview.Instance.HideEndingChoices();
-
+                UIQuestionPreview.Instance.LockQuestion();
                 return;
             }
 
             if (dir.x > 50)
             {
-                sr.sprite = rightFolded;
+                StartCoroutine(CrossFadeToSprite(rightFolded));
                 state = 2;
 
                 QuestionSystem.Instance.SetQuestionEnding(
@@ -83,7 +90,7 @@ public class DolmaRollController : MonoBehaviour
                 );
 
                 UIQuestionPreview.Instance.HideEndingChoices();
-
+                UIQuestionPreview.Instance.LockQuestion();
                 return;
             }
         }
@@ -91,7 +98,7 @@ public class DolmaRollController : MonoBehaviour
         // close fold
         if (state == 2)
         {
-            sr.sprite = allFolded;
+            StartCoroutine(CrossFadeToSprite(allFolded));
             state = 3;
             return;
         }
@@ -100,18 +107,83 @@ public class DolmaRollController : MonoBehaviour
         if (state == 3)
         {
             state = 4;
-
-            dolmaPickupObject.transform.position = transform.position;
-            dolmaPickupObject.SetActive(true);
-
-            gameObject.SetActive(false);
-
-            Debug.Log("Question: " + QuestionSystem.Instance.GetFullQuestion());
+            StartCoroutine(FadeOutAndSpawnDolma());
         }
+    }
+
+    IEnumerator CrossFadeToSprite(Sprite newSprite)
+    {
+        isTransitioning = true;
+
+        float t = 0;
+
+        Color c = sr.color;
+
+        while (t < fadeDuration)
+        {
+            t += Time.deltaTime;
+
+            float normalized = t / fadeDuration;
+            float curveValue = fadeCurve.Evaluate(normalized);
+
+            c.a = Mathf.Lerp(1, 0, curveValue);
+            sr.color = c;
+
+            yield return null;
+        }
+
+        sr.sprite = newSprite;
+
+        t = 0;
+
+        while (t < fadeDuration)
+        {
+            t += Time.deltaTime;
+
+            float normalized = t / fadeDuration;
+            float curveValue = fadeCurve.Evaluate(normalized);
+
+            c.a = Mathf.Lerp(0, 1, curveValue);
+            sr.color = c;
+
+            yield return null;
+        }
+
+        c.a = 1;
+        sr.color = c;
+
+        isTransitioning = false;
+    }
+
+    IEnumerator FadeOutAndSpawnDolma()
+    {
+        isTransitioning = true;
+
+        float t = 0;
+        Color c = sr.color;
+
+        while (t < fadeDuration)
+        {
+            t += Time.deltaTime;
+
+            float normalized = t / fadeDuration;
+            float curveValue = fadeCurve.Evaluate(normalized);
+
+            c.a = Mathf.Lerp(1, 0, curveValue);
+            sr.color = c;
+
+            yield return null;
+        }
+
+        // spawn dolma
+        dolmaPickupObject.transform.position = transform.position;
+        dolmaPickupObject.SetActive(true);
+
+        gameObject.SetActive(false);
     }
 
     public void AddStuffing()
     {
-        sr.sprite = leafWithStuffing;
+        StartCoroutine(CrossFadeToSprite(leafWithStuffing));
     }
 }
