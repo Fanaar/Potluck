@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class DolmaPickup : MonoBehaviour
 {
@@ -52,8 +53,21 @@ public class DolmaPickup : MonoBehaviour
         placed = true;
         dragging = false;
 
-        transform.position = snapPoint.position;
+        StartCoroutine(SnapToPlate(snapPoint.position));
 
         CameraPanController.Instance.PanToMother();
+    }
+
+    IEnumerator SnapToPlate(Vector3 target)
+    {
+        Vector3 start = transform.position;
+        float t = 0;
+
+        while (t < 1)
+        {
+            t += Time.deltaTime * 6f;
+            transform.position = Vector3.Lerp(start, target, t);
+            yield return null;
+        }
     }
 }

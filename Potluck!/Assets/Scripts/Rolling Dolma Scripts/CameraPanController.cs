@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class CameraPanController : MonoBehaviour
 {
@@ -7,35 +8,60 @@ public class CameraPanController : MonoBehaviour
     public Transform playerPos;
     public Transform motherPos;
 
+    [Header("Camera Pan Settings")]
+    public float panDuration = 1.5f;
+    public AnimationCurve panCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
+
+    Camera cam;
+    Coroutine currentPan;
+
     void Awake()
     {
         Instance = this;
+        cam = Camera.main;
     }
 
     public void PanToMother()
     {
-        StartCoroutine(MoveCamera(motherPos.position));
+        Debug.Log("Panning to mother");
+
+        if (currentPan != null)
+            StopCoroutine(currentPan);
+
+        currentPan = StartCoroutine(MoveCamera(motherPos.position));
     }
 
     public void PanToPlayer()
     {
-        StartCoroutine(MoveCamera(playerPos.position));
+        Debug.Log("Panning to player");
+
+        if (currentPan != null)
+            StopCoroutine(currentPan);
+
+        currentPan = StartCoroutine(MoveCamera(playerPos.position));
     }
 
-    System.Collections.IEnumerator MoveCamera(Vector3 target)
+    IEnumerator MoveCamera(Vector3 target)
     {
-        float t = 0;
+        Vector3 start = cam.transform.position;
 
-        Vector3 start = Camera.main.transform.position;
+        float time = 0f;
 
-        while (t < 1)
+        while (time < panDuration)
         {
-            t += Time.deltaTime;
+            time += Time.deltaTime;
 
-            Camera.main.transform.position =
-                Vector3.Lerp(start, target, t);
+            float normalizedTime = time / panDuration;
+
+            float curveValue = panCurve.Evaluate(normalizedTime);
+
+            cam.transform.position = Vector3.Lerp(start, target, curveValue);
 
             yield return null;
         }
+
+        cam.transform.position = target;
+
+        currentPan = null;
     }
 }
