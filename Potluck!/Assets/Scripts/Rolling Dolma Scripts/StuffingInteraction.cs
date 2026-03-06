@@ -18,14 +18,13 @@ public class StuffingInteraction : MonoBehaviour
 
     void OnMouseDown()
     {
-        // voorkomt oneindig spawnen
         if (DragDropController.Instance.IsDragging())
             return;
 
         string selected = UIQuestionPreview.Instance.GetSelectedStart();
         QuestionSystem.Instance.SetQuestionStart(selected);
 
-        Cursor.SetCursor(cursorStuffing, Vector2.zero, CursorMode.Auto);
+        UIQuestionPreview.Instance.LockQuestion();
 
         SpawnStuffing();
     }

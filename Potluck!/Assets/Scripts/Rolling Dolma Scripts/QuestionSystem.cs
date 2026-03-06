@@ -20,16 +20,19 @@ public class QuestionSystem : MonoBehaviour
     public void SetQuestionEnding(string ending)
     {
         currentQuestionEnding = ending;
+
+        UpdateQuestionUI();
+    }
+
+    void UpdateQuestionUI()
+    {
+        string fullQuestion = currentQuestionStart + " " + currentQuestionEnding;
+
+        UIQuestionPreview.Instance.ShowFullQuestion(fullQuestion);
     }
 
     public string GetFullQuestion()
     {
         return currentQuestionStart + " " + currentQuestionEnding;
-    }
-
-    public void ResetQuestion()
-    {
-        currentQuestionStart = "";
-        currentQuestionEnding = "";
     }
 }

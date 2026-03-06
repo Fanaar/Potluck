@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
 
 public class UIQuestionPreview : MonoBehaviour
@@ -9,6 +9,10 @@ public class UIQuestionPreview : MonoBehaviour
 
     string[] starts;
     int currentIndex = 0;
+    public bool questionLocked = false;
+
+    public TextMeshProUGUI leftChoiceText;
+    public TextMeshProUGUI rightChoiceText;
 
     void Awake()
     {
@@ -37,6 +41,8 @@ public class UIQuestionPreview : MonoBehaviour
 
     public void Hide()
     {
+        if (questionLocked) return;
+
         questionText.gameObject.SetActive(false);
     }
 
@@ -70,4 +76,38 @@ public class UIQuestionPreview : MonoBehaviour
     {
         return starts[currentIndex];
     }
+
+    public void ShowFullQuestion(string question)
+    {
+        questionText.gameObject.SetActive(true);
+        questionText.text = question;
+    }
+
+    public void LockQuestion()
+    {
+        questionLocked = true;
+    }
+
+    public void UnlockQuestion()
+    {
+        questionLocked = false;
+        questionText.gameObject.SetActive(false);
+    }
+
+    public void ShowEndingChoices(string left, string right)
+    {
+        leftChoiceText.gameObject.SetActive(true);
+        rightChoiceText.gameObject.SetActive(true);
+
+        leftChoiceText.text = left + " →";
+        rightChoiceText.text =  "← " + right;
+    }
+
+    public void HideEndingChoices()
+    {
+        leftChoiceText.gameObject.SetActive(false);
+        rightChoiceText.gameObject.SetActive(false);
+    }
+
+
 }

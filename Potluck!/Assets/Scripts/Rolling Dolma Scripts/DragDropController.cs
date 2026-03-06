@@ -38,12 +38,14 @@ public class DragDropController : MonoBehaviour
     {
         if (draggedObject == null) return;
 
-        // check of stuffing een geldige drop heeft gedaan
+
         StuffingDrop drop = draggedObject.GetComponent<StuffingDrop>();
 
         if (drop != null && drop.wasPlaced == false)
         {
             Destroy(draggedObject);
+
+            UIQuestionPreview.Instance.UnlockQuestion();
         }
 
         draggedObject = null;

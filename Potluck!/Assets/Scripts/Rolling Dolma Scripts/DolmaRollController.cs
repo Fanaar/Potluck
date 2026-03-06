@@ -40,32 +40,47 @@ public class DolmaRollController : MonoBehaviour
         {
             sr.sprite = bottomFolded;
             state = 1;
+
+            UIQuestionPreview.Instance.ShowEndingChoices(
+                "toen je Irak moest verlaten?",
+                "toen je op basketbal zat?"
+            );
+
             return;
         }
 
         if (state == 1)
         {
+            // speler vouwt links
             if (dir.x < -50)
             {
                 sr.sprite = leftFolded;
                 state = 2;
 
                 QuestionSystem.Instance.SetQuestionEnding(
-                    "toen je Irak moest verlaten?"
+                    "toen je op basketbal zat?"
                 );
+
+                UIQuestionPreview.Instance.HideEndingChoices();
+
+                return;
             }
 
+            // speler vouwt rechts
             if (dir.x > 50)
             {
                 sr.sprite = rightFolded;
                 state = 2;
 
                 QuestionSystem.Instance.SetQuestionEnding(
-                    "toen je hier opnieuw moest beginnen?"
-                );
-            }
+                    "toen je Irak moest verlaten?"
 
-            return;
+                );
+
+                UIQuestionPreview.Instance.HideEndingChoices();
+
+                return;
+            }
         }
 
         if (state == 2)

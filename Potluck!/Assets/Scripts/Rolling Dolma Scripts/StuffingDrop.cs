@@ -13,6 +13,8 @@ public class StuffingDrop : MonoBehaviour
             if (roll != null)
             {
                 roll.AddStuffing();
+
+                UIQuestionPreview.Instance.LockQuestion();
             }
 
             wasPlaced = true;
