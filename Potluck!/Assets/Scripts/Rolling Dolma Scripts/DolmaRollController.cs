@@ -7,7 +7,8 @@ public class DolmaRollController : MonoBehaviour
     public Sprite leftFolded;
     public Sprite rightFolded;
     public Sprite allFolded;
-    public Sprite finishedDolma;
+
+    public GameObject dolmaPickupObject;
 
     SpriteRenderer sr;
 
@@ -22,13 +23,16 @@ public class DolmaRollController : MonoBehaviour
 
     void OnMouseDown()
     {
+        if (state >= 4) return;
+
         dragStart = Input.mousePosition;
     }
 
     void OnMouseUp()
     {
-        Vector2 dragEnd = Input.mousePosition;
+        if (state >= 4) return;
 
+        Vector2 dragEnd = Input.mousePosition;
         Vector2 dir = dragEnd - dragStart;
 
         ProcessDrag(dir);
@@ -36,6 +40,9 @@ public class DolmaRollController : MonoBehaviour
 
     void ProcessDrag(Vector2 dir)
     {
+        if (state >= 4) return;
+
+        // bottom fold
         if (state == 0 && dir.y > 50)
         {
             sr.sprite = bottomFolded;
@@ -49,9 +56,9 @@ public class DolmaRollController : MonoBehaviour
             return;
         }
 
+        // left/right fold
         if (state == 1)
         {
-            // speler vouwt links
             if (dir.x < -50)
             {
                 sr.sprite = leftFolded;
@@ -66,7 +73,6 @@ public class DolmaRollController : MonoBehaviour
                 return;
             }
 
-            // speler vouwt rechts
             if (dir.x > 50)
             {
                 sr.sprite = rightFolded;
@@ -74,7 +80,6 @@ public class DolmaRollController : MonoBehaviour
 
                 QuestionSystem.Instance.SetQuestionEnding(
                     "toen je Irak moest verlaten?"
-
                 );
 
                 UIQuestionPreview.Instance.HideEndingChoices();
@@ -83,6 +88,7 @@ public class DolmaRollController : MonoBehaviour
             }
         }
 
+        // close fold
         if (state == 2)
         {
             sr.sprite = allFolded;
@@ -90,10 +96,15 @@ public class DolmaRollController : MonoBehaviour
             return;
         }
 
+        // finished
         if (state == 3)
         {
-            sr.sprite = finishedDolma;
             state = 4;
+
+            dolmaPickupObject.transform.position = transform.position;
+            dolmaPickupObject.SetActive(true);
+
+            gameObject.SetActive(false);
 
             Debug.Log("Question: " + QuestionSystem.Instance.GetFullQuestion());
         }

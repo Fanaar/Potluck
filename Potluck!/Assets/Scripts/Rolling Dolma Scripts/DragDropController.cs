@@ -15,11 +15,13 @@ public class DragDropController : MonoBehaviour
     {
         if (draggedObject == null) return;
 
+        // volg muis
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePos.z = 0;
 
         draggedObject.transform.position = mousePos;
 
+        // loslaten
         if (Input.GetMouseButtonUp(0))
         {
             StopDrag();
@@ -30,21 +32,21 @@ public class DragDropController : MonoBehaviour
     {
         draggedObject = obj;
     }
+
     public bool IsDragging()
     {
         return draggedObject != null;
     }
-    void StopDrag()
+
+    public void StopDrag()
     {
         if (draggedObject == null) return;
-
 
         StuffingDrop drop = draggedObject.GetComponent<StuffingDrop>();
 
         if (drop != null && drop.wasPlaced == false)
         {
             Destroy(draggedObject);
-
             UIQuestionPreview.Instance.UnlockQuestion();
         }
 

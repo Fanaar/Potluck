@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 38426598}
   m_Layer: 0
   m_Name: Plate
-  m_TagString: Untagged
+  m_TagString: Plate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1413,9 +1413,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5b4de2b647d0a440b3e651dcdd673dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questions:
-  - {fileID: 11400000, guid: 20190dc22f893e64b982ceafb46cd0c8, type: 2}
-  - {fileID: 11400000, guid: e7cd5030ddb9ff041b48d5e86883591b, type: 2}
+  questions: []
 --- !u!114 &700107104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4028,14 +4026,14 @@ SceneRoots:
   m_Roots:
   - {fileID: 451503911}
   - {fileID: 700107099}
-  - {fileID: 1618222339}
   - {fileID: 395722225}
+  - {fileID: 1618222339}
+  - {fileID: 38426597}
   - {fileID: 974939729}
   - {fileID: 2118718108}
   - {fileID: 1835657158}
   - {fileID: 2125940702}
   - {fileID: 1105160317}
-  - {fileID: 38426597}
   - {fileID: 1556665933}
   - {fileID: 219813718}
   - {fileID: 1551746220}
