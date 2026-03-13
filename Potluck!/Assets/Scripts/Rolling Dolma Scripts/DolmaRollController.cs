@@ -72,7 +72,7 @@ public class DolmaRollController : MonoBehaviour
                 state = 2;
 
                 QuestionSystem.Instance.SetQuestionEnding(
-                    "toen je op basketbal zat?"
+                    "toen je vroeger op basketbal zat?"
                 );
 
                 UIQuestionPreview.Instance.HideEndingChoices();
