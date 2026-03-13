@@ -132,12 +132,24 @@ PrefabInstance:
       value: Fanaar In Street
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: 7fab8459bd053224c82eb43961457179, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.40603
+      objectReference: {fileID: 0}
+    - target: {fileID: -7552582706839291426, guid: 7fab8459bd053224c82eb43961457179, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.40603
+      objectReference: {fileID: 0}
+    - target: {fileID: -7552582706839291426, guid: 7fab8459bd053224c82eb43961457179, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.40603
+      objectReference: {fileID: 0}
+    - target: {fileID: -7552582706839291426, guid: 7fab8459bd053224c82eb43961457179, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.027504
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: 7fab8459bd053224c82eb43961457179, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.0040913
+      value: -4.8
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: 7fab8459bd053224c82eb43961457179, type: 3}
       propertyPath: m_LocalPosition.z
