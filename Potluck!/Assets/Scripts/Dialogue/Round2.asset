@@ -10,37 +10,35 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 54346c1d6124c684786b9565e639885c, type: 3}
-  m_Name: Round1
+  m_Name: Round2
   m_EditorClassIdentifier: 
   responses:
   - lines:
-    - text: Ik mis vooral het eten van mijn moeder, dat was echt het allerlekkerste.
+    - text: Ik denk dat ik het echt voelde toen ik Schiphol verliet.
       sprite: {fileID: 21300000, guid: b8340e73f8b75fc49872a5baa48529cf, type: 3}
-    - text: Het fruit smaakte daar ook zoveel beter dan hier.
+    - text: " Alles was zo groen, echt t\xE9 groen."
       sprite: {fileID: 21300000, guid: 5b069b0162cb57a42b571b35bdd5f1f7, type: 3}
-    - text: Hier heb je niet alles, en wat er wel is heeft vaak minder smaak.
+    - text: Overal om ons heen zag je groen, terwijl ik gewend was aan geel in Irak.
       sprite: {fileID: 21300000, guid: 56ae68dde5e202442af20615dcf168b2, type: 3}
-    - text: Ik denk vaak aan tamr al iraqi, die dadels van vroeger.
+    - text: Het voelde meteen anders, alsof ik in een andere wereld was.
       sprite: {fileID: 21300000, guid: 5a9373ce436dddd41b08b8d197238231, type: 3}
-    - text: We hadden een dadelboom en elk jaar kwam er een boer om de oogst te halen.
+    - text: Die eerste dag zag ik een oude vrouw op een fiets en mijn hart begon
+        sneller te kloppen.
       sprite: {fileID: 21300000, guid: 52c1687365c86714b9bfabd17cecca48, type: 3}
-    - text: Als hij in de boom klom, ging ik stiekem op het dak kijken, omdat ik
-        dat zo stoer vond.
+    - text: 'Ik dacht echt: als ze nu valt, gaat ze dood, want waar ik vandaan kom
+        deden oudere vrouwen dat soort dingen helemaal niet.'
       sprite: {fileID: 21300000, guid: 32a04d723892c674fb180f1635571ff1, type: 3}
   - lines:
-    - text: Ik mis mijn baan, mijn vriendinnen, mijn familie, maar het allermeest
-        mijn moeder.
+    - text: De eerste keer dat ik Irak moest verlaten ging ik naar Iran.
       sprite: {fileID: 21300000, guid: b8340e73f8b75fc49872a5baa48529cf, type: 3}
-    - text: Ik mis de straten van Bagdad en hoe levendig alles daar was.
+    - text: Omdat we Koerden waren en bij de peshmerga hoorden, werden we het land
+        uitgezet.
       sprite: {fileID: 21300000, guid: 5b069b0162cb57a42b571b35bdd5f1f7, type: 3}
-    - text: "Als je naar buiten ging zag je van alles: de chaos van de auto\u2019s,
-        het getoeter, het gelach van mensen."
+    - text: Ik was toen tien jaar oud en het zijn geen fijne herinneringen.
       sprite: {fileID: 21300000, guid: 56ae68dde5e202442af20615dcf168b2, type: 3}
-    - text: Het voelde alsof de straat altijd leefde, alsof het broeide van energie.
-      sprite: {fileID: 21300000, guid: fcfa58a935104984581fcd80421f8dde, type: 3}
-    - text: Ik mis het thuisgevoel, vooral de avonden op het dak waar we eerst water
-        sproeiden om af te koelen en daarna onder de sterren sliepen.
+    - text: Maar er was daar weinig te doen, dus ik begon te helpen met koken.
+      sprite: {fileID: 21300000, guid: 5a9373ce436dddd41b08b8d197238231, type: 3}
+    - text: Ik leerde hoe ik kobeh moest vullen en hoe ik brood moest kneden.
       sprite: {fileID: 21300000, guid: 52c1687365c86714b9bfabd17cecca48, type: 3}
-    - text: De maan leek daar groter, en in de ochtend voelde je een zacht briesje,
-        en soms denk ik ook aan hoe we langs de Tigris wandelden.
+    - text: Dat was de eerste keer dat ik echt het gevoel had dat ik kon helpen.
       sprite: {fileID: 21300000, guid: 32a04d723892c674fb180f1635571ff1, type: 3}
