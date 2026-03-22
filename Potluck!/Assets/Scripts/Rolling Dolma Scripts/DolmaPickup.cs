@@ -54,8 +54,7 @@ public class DolmaPickup : MonoBehaviour
         dragging = false;
 
         StartCoroutine(SnapToPlate(snapPoint.position));
-
-        CameraPanController.Instance.PanToMother();
+        StartCoroutine(HandleMotherSequence());
     }
 
     IEnumerator SnapToPlate(Vector3 target)
@@ -69,5 +68,15 @@ public class DolmaPickup : MonoBehaviour
             transform.position = Vector3.Lerp(start, target, t);
             yield return null;
         }
+    }
+
+    IEnumerator HandleMotherSequence()
+    {
+        CameraPanController.Instance.PanToMother();
+
+        yield return new WaitForSeconds(1.5f); // zelfde als panDuration
+
+        MotherLine[] lines = RoundManager.Instance.GetCurrentResponse();
+        MotherSequencePlayer.Instance.PlaySequence(lines);
     }
 }

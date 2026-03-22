@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class RoundManager : MonoBehaviour
 {
@@ -6,15 +6,38 @@ public class RoundManager : MonoBehaviour
 
     public int round = 0;
 
-    public SpriteRenderer bowlRenderer;
+    [Header("Rounds")]
+    public RoundData[] rounds; // 👈 BELANGRIJK
 
+    [Header("Bowl Visual")]
+    public SpriteRenderer bowlRenderer;
     public Sprite bowlFull;
     public Sprite bowlHalf;
     public Sprite bowlEmpty;
 
+    int currentStartIndex;
+    int currentEndingIndex;
+
     void Awake()
     {
         Instance = this;
+    }
+
+    public void SetStartIndex(int index)
+    {
+        currentStartIndex = index;
+    }
+
+    public void SetEndingIndex(int index)
+    {
+        currentEndingIndex = index;
+    }
+
+    public MotherLine[] GetCurrentResponse()
+    {
+        RoundData currentRound = rounds[round];
+
+        return currentRound.responses[currentEndingIndex].lines;
     }
 
     public void NextRound()
@@ -34,7 +57,6 @@ public class RoundManager : MonoBehaviour
     void EndScene()
     {
         Debug.Log("Final dolma moment");
-
         SceneTransition.Instance.LoadNextScene();
     }
 }

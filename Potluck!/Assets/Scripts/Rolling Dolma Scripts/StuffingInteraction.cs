@@ -22,7 +22,8 @@ public class StuffingInteraction : MonoBehaviour
             return;
 
         string selected = UIQuestionPreview.Instance.GetSelectedStart();
-        QuestionSystem.Instance.SetQuestionStart(selected);
+        int index = UIQuestionPreview.Instance.GetCurrentIndex();
+        RoundManager.Instance.SetStartIndex(index);
 
         UIQuestionPreview.Instance.LockQuestion();
 
