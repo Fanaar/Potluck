@@ -73,6 +73,7 @@ public class DolmaRollController : MonoBehaviour
                 state = 2;
 
                 RoundManager.Instance.SetEndingIndex(0);
+                GameState.Instance.lastChoice = 0;
 
                 UIQuestionPreview.Instance.HideEndingChoices();
                 UIQuestionPreview.Instance.LockQuestion();
@@ -92,6 +93,7 @@ public class DolmaRollController : MonoBehaviour
                 state = 2;
 
                 RoundManager.Instance.SetEndingIndex(1);
+                GameState.Instance.lastChoice = 1;
 
                 UIQuestionPreview.Instance.HideEndingChoices();
                 UIQuestionPreview.Instance.LockQuestion();

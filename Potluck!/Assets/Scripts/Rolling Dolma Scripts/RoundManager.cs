@@ -23,6 +23,10 @@ public class RoundManager : MonoBehaviour
         Instance = this;
     }
 
+    void Start()
+    {
+        round = GameState.Instance.currentRound;
+    }
     public void SetStartIndex(int index)
     {
         currentStartIndex = index;

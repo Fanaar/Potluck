@@ -12,4 +12,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54346c1d6124c684786b9565e639885c, type: 3}
   m_Name: Round3
   m_EditorClassIdentifier: 
-  responses: []
+  responses:
+  - lines:
+    - text: "Ik voelde me het meest ver van thuis toen Amerika Irak binnenviel in
+        2003.\L"
+      sprite: {fileID: 21300000, guid: b8340e73f8b75fc49872a5baa48529cf, type: 3}
+    - text: Elke keer als er oorlog was, waren wij er altijd middenin.
+      sprite: {fileID: 21300000, guid: 5b069b0162cb57a42b571b35bdd5f1f7, type: 3}
+    - text: Maar dit keer was ik buiten het land en kon ik niets doen.
+      sprite: {fileID: 21300000, guid: 56ae68dde5e202442af20615dcf168b2, type: 3}
+    - text: Dat voelde heel machteloos.
+      sprite: {fileID: 21300000, guid: fcfa58a935104984581fcd80421f8dde, type: 3}
+    - text: Ik voelde me ook schuldig dat ik niet bij hen was in die ellende.
+      sprite: {fileID: 21300000, guid: 52c1687365c86714b9bfabd17cecca48, type: 3}
+    - text: Alsof ik ver weg was terwijl mijn hart daar nog zat.
+      sprite: {fileID: 21300000, guid: 32a04d723892c674fb180f1635571ff1, type: 3}
+  - lines:
+    - text: "Ik voel me het meest trots op mezelf door mijn kinderen.\L"
+      sprite: {fileID: 21300000, guid: b8340e73f8b75fc49872a5baa48529cf, type: 3}
+    - text: Dat ik drie hele mooie en goed opgevoede kinderen op de wereld heb gezet.
+      sprite: {fileID: 21300000, guid: 5b069b0162cb57a42b571b35bdd5f1f7, type: 3}
+    - text: Daar ben ik echt trots op.
+      sprite: {fileID: 21300000, guid: 56ae68dde5e202442af20615dcf168b2, type: 3}
+    - text: Dat is voor mij het belangrijkste wat er is.
+      sprite: {fileID: 21300000, guid: 5a9373ce436dddd41b08b8d197238231, type: 3}
+    - text: Alles wat ik heb meegemaakt valt daarbij in het niet.
+      sprite: {fileID: 21300000, guid: 52c1687365c86714b9bfabd17cecca48, type: 3}
+    - text: Dat is uiteindelijk het enige wat echt telt voor mij.
+      sprite: {fileID: 21300000, guid: 32a04d723892c674fb180f1635571ff1, type: 3}

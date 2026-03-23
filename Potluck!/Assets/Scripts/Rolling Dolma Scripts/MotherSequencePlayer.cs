@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using TMPro;
+using UnityEngine.SceneManagement; // 👈 BELANGRIJK
 
 public class MotherSequencePlayer : MonoBehaviour
 {
@@ -21,14 +22,15 @@ public class MotherSequencePlayer : MonoBehaviour
         dialogueText.gameObject.SetActive(false);
     }
 
-    public void PlaySequence(MotherLine[] lines) // ✅ FIX
+    public void PlaySequence(MotherLine[] lines)
     {
         StopAllCoroutines();
         StartCoroutine(Play(lines));
     }
 
-    IEnumerator Play(MotherLine[] lines) // ✅ FIX
+    IEnumerator Play(MotherLine[] lines)
     {
+        // camera naar moeder
         CameraPanController.Instance.PanToMother();
 
         yield return new WaitForSeconds(startDelay);
@@ -42,10 +44,31 @@ public class MotherSequencePlayer : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
 
-        RoundManager.Instance.NextRound();
+        LoadNextScene(); // 👈 NIEUW
     }
 
-    IEnumerator PlayLine(MotherLine line) // ✅ FIX
+    void LoadNextScene()
+    {
+        int round = GameState.Instance.currentRound;
+        int choice = GameState.Instance.lastChoice;
+
+        string sceneName = "";
+
+        if (round == 0)
+            sceneName = (choice == 0) ? "R1_A" : "R1_B";
+
+        else if (round == 1)
+            sceneName = (choice == 0) ? "R2_A" : "R2_B";
+
+        else if (round == 2)
+            sceneName = (choice == 0) ? "R3_A" : "R3_B";
+
+        Debug.Log("Loading scene: " + sceneName); // 👈 debug
+
+        SceneManager.LoadScene(sceneName);
+    }
+
+    IEnumerator PlayLine(MotherLine line)
     {
         yield return StartCoroutine(Fade(1, 0));
 
