@@ -935,7 +935,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8f549dd87f8b0842b6e139490bfc2e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueText: {fileID: 0}
 --- !u!4 &438409705
 Transform:
   m_ObjectHideFlags: 0
@@ -1481,6 +1480,7 @@ GameObject:
   - component: {fileID: 700107101}
   - component: {fileID: 700107100}
   - component: {fileID: 700107107}
+  - component: {fileID: 700107108}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -1581,8 +1581,8 @@ MonoBehaviour:
   round: 0
   rounds:
   - {fileID: 11400000, guid: 84afb39dcea86384fb49d63f0ba6592e, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: b1de10f0ccf687d4ab0b5a979ae0f98f, type: 2}
+  - {fileID: 11400000, guid: 771039ff715b8394888a9f5080f8827a, type: 2}
   bowlRenderer: {fileID: 1618222338}
   bowlFull: {fileID: 21300000, guid: 7a7b56f71bbff8d4385d83fa0fa7c15a, type: 3}
   bowlHalf: {fileID: 21300000, guid: fd0557a3194575a41ae0301bd4178fa3, type: 3}
@@ -1601,9 +1601,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   motherRenderer: {fileID: 475743056}
   dialogueText: {fileID: 6253831}
-  timeBetweenLines: 2.5
+  timeBetweenLines: 4
   fadeDuration: 0.3
   startDelay: 1
+--- !u!114 &700107108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 700107098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc0005df70fddb942b366291485bdf8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentRound: 0
+  lastChoice: -1
+  returningFromScene: 0
 --- !u!1 &761208466
 GameObject:
   m_ObjectHideFlags: 0
