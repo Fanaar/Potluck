@@ -6,6 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Walking in street.unity
+    guid: fc359ce99fd5d8a478b39c79a3115411
+  - enabled: 1
+    path: Assets/Scenes/Grape Leafs Nostalgia.unity
+    guid: 722eff58ae0893e47a73348812bb8488
+  - enabled: 1
+    path: Assets/Scenes/Rolling Dolma.unity
+    guid: 536aa07261cefd54ba2b9c9291dc1fc5
+  - enabled: 1
+    path: Assets/Scenes/R1_A.unity
+    guid: 2054204613709b94bb1de3a15c058c65
+  - enabled: 1
     path: Assets/Scenes/Cooking Dolma.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   m_configObjects:
