@@ -5,7 +5,7 @@ public class GameState : MonoBehaviour
     public static GameState Instance;
 
     public int currentRound = 0;
-    public int lastChoice = -1; // 0 = links, 1 = rechts
+    public int lastChoice = -1;
 
     public bool returningFromScene = false;
 
@@ -18,6 +18,6 @@ public class GameState : MonoBehaviour
         }
 
         Instance = this;
-        DontDestroyOnLoad(gameObject); // 🔥 blijft tussen scenes bestaan
+        DontDestroyOnLoad(gameObject);
     }
 }

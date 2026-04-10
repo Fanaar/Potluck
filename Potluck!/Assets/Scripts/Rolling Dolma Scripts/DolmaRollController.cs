@@ -11,16 +11,18 @@ public class DolmaRollController : MonoBehaviour
 
     public GameObject dolmaPickupObject;
 
+    [Header("Question Endings")]
+    public string leftEnding;
+    public string rightEnding;
+
     [Header("Fade Settings")]
     public float fadeDuration = 0.15f;
     public AnimationCurve fadeCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
 
     SpriteRenderer sr;
-
     Vector2 dragStart;
 
     int state = 0;
-
     bool isTransitioning = false;
 
     void Start()
@@ -31,7 +33,6 @@ public class DolmaRollController : MonoBehaviour
     void OnMouseDown()
     {
         if (state >= 4 || isTransitioning) return;
-
         dragStart = Input.mousePosition;
     }
 
@@ -49,24 +50,24 @@ public class DolmaRollController : MonoBehaviour
     {
         if (state >= 4 || isTransitioning) return;
 
-        // 🔻 STEP 1: bottom fold
+        // STEP 1: bottom fold
         if (state == 0 && dir.y > 50)
         {
             StartCoroutine(CrossFadeToSprite(bottomFolded));
             state = 1;
 
             UIQuestionPreview.Instance.ShowEndingChoices(
-                "aan het leven dat je achter moest laten?",
-                "aan het eten van vroeger?"
+                rightEnding,
+                leftEnding
             );
 
             return;
         }
 
-        // 🔻 STEP 2: keuze links/rechts
+        // STEP 2: keuze links/rechts
         if (state == 1)
         {
-            // LINKS
+            // LINKS (slepen naar links)
             if (dir.x < -50)
             {
                 StartCoroutine(CrossFadeToSprite(leftFolded));
@@ -78,15 +79,12 @@ public class DolmaRollController : MonoBehaviour
                 UIQuestionPreview.Instance.HideEndingChoices();
                 UIQuestionPreview.Instance.LockQuestion();
 
-                // 👉 UI (string = alleen visueel!)
-                UIQuestionPreview.Instance.ShowFullQuestion(
-                    "aan het eten van vroeger?"
-                );
+                UIQuestionPreview.Instance.ShowFullQuestion(leftEnding);
 
                 return;
             }
 
-            // RECHTS
+            // RECHTS (slepen naar rechts)
             if (dir.x > 50)
             {
                 StartCoroutine(CrossFadeToSprite(rightFolded));
@@ -98,15 +96,13 @@ public class DolmaRollController : MonoBehaviour
                 UIQuestionPreview.Instance.HideEndingChoices();
                 UIQuestionPreview.Instance.LockQuestion();
 
-                UIQuestionPreview.Instance.ShowFullQuestion(
-                    "aan het leven dat je achter moest laten?"
-                );
+                UIQuestionPreview.Instance.ShowFullQuestion(rightEnding);
 
                 return;
             }
         }
 
-        // 🔻 STEP 3: dichtrollen
+        // STEP 3: dichtrollen
         if (state == 2)
         {
             StartCoroutine(CrossFadeToSprite(allFolded));
@@ -114,7 +110,7 @@ public class DolmaRollController : MonoBehaviour
             return;
         }
 
-        // 🔻 STEP 4: klaar → spawn dolma
+        // STEP 4: klaar → spawn dolma
         if (state == 3)
         {
             state = 4;

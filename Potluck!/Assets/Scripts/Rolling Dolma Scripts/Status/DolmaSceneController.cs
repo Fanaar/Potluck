@@ -3,22 +3,17 @@ using System.Collections;
 
 public class DolmaSceneController : MonoBehaviour
 {
-    public GameObject dolmaOnPlatePrefab;
-
     void Start()
     {
         if (GameState.Instance.returningFromScene)
         {
-            StartCoroutine(HandleReturnFlow());
+            StartCoroutine(ReturnFlow());
         }
     }
 
-    IEnumerator HandleReturnFlow()
+    IEnumerator ReturnFlow()
     {
         GameState.Instance.returningFromScene = false;
-
-        // moeder legt dolma neer
-        dolmaOnPlatePrefab.SetActive(true);
 
         yield return new WaitForSeconds(0.5f);
 
@@ -27,7 +22,7 @@ public class DolmaSceneController : MonoBehaviour
 
         yield return new WaitForSeconds(1.5f);
 
-        // nieuwe vraag starten
+        // nieuwe vraag unlocken
         UIQuestionPreview.Instance.UnlockQuestion();
     }
 }

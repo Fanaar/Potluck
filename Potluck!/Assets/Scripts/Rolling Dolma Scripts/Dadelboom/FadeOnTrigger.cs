@@ -5,7 +5,7 @@ public class FadeOnTrigger : MonoBehaviour
 {
     private SpriteRenderer sr;
     private bool isFading = false;
-
+    public FinishBranchScene finishScene;
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
@@ -53,5 +53,7 @@ public class FadeOnTrigger : MonoBehaviour
         sr.color = new Color(startColor.r, startColor.g, startColor.b, 0f);
 
         Debug.Log("Fade klaar");
+
+        finishScene.FinishScene();
     }
 }

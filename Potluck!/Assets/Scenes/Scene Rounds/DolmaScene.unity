@@ -478,7 +478,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Irak
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -881,6 +881,8 @@ MonoBehaviour:
   rightFolded: {fileID: 21300000, guid: fcfa58a935104984581fcd80421f8dde, type: 3}
   allFolded: {fileID: 21300000, guid: 52c1687365c86714b9bfabd17cecca48, type: 3}
   dolmaPickupObject: {fileID: 200292713}
+  leftEnding: aan het eten van vroeger?
+  rightEnding: aan het leven dat je achter moest laten?
   fadeDuration: 0.2
   fadeCurve:
     serializedVersion: 2
@@ -906,50 +908,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1 &438409703
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 438409705}
-  - component: {fileID: 438409704}
-  m_Layer: 0
-  m_Name: DialogueUI
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &438409704
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 438409703}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8f549dd87f8b0842b6e139490bfc2e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &438409705
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 438409703}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1147.3564, y: 479.169, z: -5.8109436}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &451503908
 GameObject:
   m_ObjectHideFlags: 0
@@ -1481,6 +1439,7 @@ GameObject:
   - component: {fileID: 700107100}
   - component: {fileID: 700107107}
   - component: {fileID: 700107108}
+  - component: {fileID: 700107109}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -1601,7 +1560,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   motherRenderer: {fileID: 475743056}
   dialogueText: {fileID: 6253831}
-  timeBetweenLines: 4
+  timeBetweenLines: 1
   fadeDuration: 0.3
   startDelay: 1
 --- !u!114 &700107108
@@ -1619,6 +1578,22 @@ MonoBehaviour:
   currentRound: 0
   lastChoice: -1
   returningFromScene: 0
+--- !u!114 &700107109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 700107098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8182eca4c56ff8247a8dd87fb0a0d5af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questionText: {fileID: 1802815936}
+  questionLocked: 0
+  leftChoiceText: {fileID: 148506034}
+  rightChoiceText: {fileID: 761208468}
 --- !u!1 &761208466
 GameObject:
   m_ObjectHideFlags: 0
@@ -1676,7 +1651,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Basketbal
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2088,54 +2063,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 974939729}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1250267839
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1250267841}
-  - component: {fileID: 1250267840}
-  m_Layer: 0
-  m_Name: UIQuestionPreview
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1250267840
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1250267839}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8182eca4c56ff8247a8dd87fb0a0d5af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  questionText: {fileID: 1802815936}
-  questionLocked: 0
-  leftChoiceText: {fileID: 148506034}
-  rightChoiceText: {fileID: 761208468}
---- !u!4 &1250267841
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1250267839}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1147.3564, y: 479.169, z: -5.8109436}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1280070371
 GameObject:
@@ -3546,7 +3473,5 @@ SceneRoots:
   - {fileID: 1556665933}
   - {fileID: 219813718}
   - {fileID: 1551746220}
-  - {fileID: 1250267841}
-  - {fileID: 438409705}
   - {fileID: 455565050}
   - {fileID: 94501673}

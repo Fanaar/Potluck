@@ -26,6 +26,7 @@ public class RoundManager : MonoBehaviour
     void Start()
     {
         round = GameState.Instance.currentRound;
+        Debug.Log("Current Round: " + round);
     }
     public void SetStartIndex(int index)
     {
