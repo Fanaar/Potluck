@@ -11,6 +11,8 @@ public class StarSpawner : MonoBehaviour
 
     private int currentStars = 0;
 
+    public FinishBranchScene finishScene;
+
     void Update()
     {
         if (Input.GetMouseButtonDown(0)
@@ -50,5 +52,11 @@ public class StarSpawner : MonoBehaviour
 
         Instantiate(starPrefab, worldPosition, Quaternion.identity);
         currentStars++;
+
+        // 👇 check of we klaar zijn
+        if (currentStars >= maxStars && finishScene != null)
+        {
+            finishScene.FinishScene();
+        }
     }
 }
