@@ -15,11 +15,23 @@ EditorBuildSettings:
     path: Assets/Scenes/Scene Rounds/DolmaScene.unity
     guid: 536aa07261cefd54ba2b9c9291dc1fc5
   - enabled: 1
-    path: Assets/Scenes/R1_A.unity
+    path: Assets/Scenes/Branch Scenes/R1_A.unity
     guid: 2054204613709b94bb1de3a15c058c65
   - enabled: 1
-    path: Assets/Scenes/R1_B.unity
+    path: Assets/Scenes/Branch Scenes/R1_B.unity
     guid: 0a0ce01b73808db48b7288a8734eb322
+  - enabled: 1
+    path: Assets/Scenes/Branch Scenes/R2_A.unity
+    guid: f606212200b96974d8e3edb427f946d2
+  - enabled: 1
+    path: Assets/Scenes/Branch Scenes/R2_B.unity
+    guid: 95bdc7d834bbca84a86f3fa10713b9eb
+  - enabled: 1
+    path: Assets/Scenes/Branch Scenes/R3_A.unity
+    guid: 5c31738ae6055a64e8308e5915db79f7
+  - enabled: 1
+    path: Assets/Scenes/Branch Scenes/R3_B.unity
+    guid: 4ec566ed07f1d6d4f9b1236587466224
   - enabled: 1
     path: Assets/Scenes/Cooking Dolma.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02

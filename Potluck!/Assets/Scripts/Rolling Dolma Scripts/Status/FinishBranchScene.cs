@@ -3,6 +3,9 @@ using UnityEngine.SceneManagement;
 
 public class FinishBranchScene : MonoBehaviour
 {
+    [Header("Scene Settings")]
+    public string dolmaSceneName = "DolmaScene";
+
     public void FinishScene()
     {
         // ronde verhogen
@@ -12,6 +15,6 @@ public class FinishBranchScene : MonoBehaviour
         GameState.Instance.returningFromScene = true;
 
         // terug naar dolma scene
-        SceneManager.LoadScene("DolmaScene");
+        SceneManager.LoadScene(dolmaSceneName);
     }
 }
