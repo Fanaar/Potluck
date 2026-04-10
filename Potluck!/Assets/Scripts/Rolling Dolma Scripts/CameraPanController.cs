@@ -3,8 +3,6 @@ using System.Collections;
 
 public class CameraPanController : MonoBehaviour
 {
-    public static CameraPanController Instance;
-
     public Transform playerPos;
     public Transform motherPos;
 
@@ -17,7 +15,6 @@ public class CameraPanController : MonoBehaviour
 
     void Awake()
     {
-        Instance = this;
         cam = Camera.main;
     }
 

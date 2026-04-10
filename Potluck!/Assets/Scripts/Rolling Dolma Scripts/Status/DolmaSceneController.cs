@@ -3,6 +3,9 @@ using System.Collections;
 
 public class DolmaSceneController : MonoBehaviour
 {
+    [Header("Scene References")]
+    public CameraPanController cameraPan;
+
     void Start()
     {
         if (GameState.Instance.returningFromScene)
@@ -18,9 +21,11 @@ public class DolmaSceneController : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         // camera terug naar speler
-        CameraPanController.Instance.PanToPlayer();
-
-        yield return new WaitForSeconds(1.5f);
+        if (cameraPan != null)
+        {
+            cameraPan.PanToPlayer();
+            yield return new WaitForSeconds(cameraPan.panDuration);
+        }
 
         // nieuwe vraag unlocken
         UIQuestionPreview.Instance.UnlockQuestion();

@@ -6,6 +6,9 @@ public class DolmaPickup : MonoBehaviour
     bool dragging = false;
     bool placed = false;
 
+    [Header("Scene References")]
+    public CameraPanController cameraPan;
+
     void OnMouseDown()
     {
         if (placed) return;
@@ -30,18 +33,14 @@ public class DolmaPickup : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-
         if (placed) return;
 
         if (other.CompareTag("Plate"))
         {
-
             Transform snapPoint = other.transform.Find("DolmaSnapPoint");
 
             if (snapPoint == null)
-            {
                 return;
-            }
 
             PlaceOnPlate(snapPoint);
         }
@@ -49,7 +48,6 @@ public class DolmaPickup : MonoBehaviour
 
     void PlaceOnPlate(Transform snapPoint)
     {
-
         placed = true;
         dragging = false;
 
@@ -72,11 +70,17 @@ public class DolmaPickup : MonoBehaviour
 
     IEnumerator HandleMotherSequence()
     {
-        CameraPanController.Instance.PanToMother();
-
-        yield return new WaitForSeconds(1.5f); // zelfde als panDuration
+        if (cameraPan != null)
+        {
+            cameraPan.PanToMother();
+            yield return new WaitForSeconds(cameraPan.panDuration);
+        }
 
         MotherLine[] lines = RoundManager.Instance.GetCurrentResponse();
-        MotherSequencePlayer.Instance.PlaySequence(lines);
+
+        if (lines != null && lines.Length > 0)
+        {
+            MotherSequencePlayer.Instance.PlaySequence(lines);
+        }
     }
 }

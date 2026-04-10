@@ -613,6 +613,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5504414643960373572, guid: 12a3f5b8d6a447948bde70cf0eb40971, type: 3}
+      propertyPath: cameraPan
+      value: 
+      objectReference: {fileID: 700107102}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1558,6 +1562,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d3287aa7ffc2a147b065b6ac733794d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraPan: {fileID: 700107102}
   motherRenderer: {fileID: 475743056}
   dialogueText: {fileID: 6253831}
   timeBetweenLines: 1

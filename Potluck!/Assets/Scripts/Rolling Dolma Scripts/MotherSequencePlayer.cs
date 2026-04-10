@@ -1,13 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 using TMPro;
-using UnityEngine.SceneManagement; // 👈 BELANGRIJK
+using UnityEngine.SceneManagement;
 
 public class MotherSequencePlayer : MonoBehaviour
 {
     public static MotherSequencePlayer Instance;
 
-    [Header("References")]
+    [Header("Scene References")]
+    public CameraPanController cameraPan;
+
+    [Header("Dialogue References")]
     public SpriteRenderer motherRenderer;
     public TextMeshProUGUI dialogueText;
 
@@ -31,7 +34,11 @@ public class MotherSequencePlayer : MonoBehaviour
     IEnumerator Play(MotherLine[] lines)
     {
         // camera naar moeder
-        CameraPanController.Instance.PanToMother();
+        if (cameraPan != null)
+        {
+            cameraPan.PanToMother();
+            yield return new WaitForSeconds(cameraPan.panDuration);
+        }
 
         yield return new WaitForSeconds(startDelay);
 
@@ -44,7 +51,7 @@ public class MotherSequencePlayer : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
 
-        LoadNextScene(); // 👈 NIEUW
+        LoadNextScene();
     }
 
     void LoadNextScene()
@@ -63,7 +70,7 @@ public class MotherSequencePlayer : MonoBehaviour
         else if (round == 2)
             sceneName = (choice == 0) ? "R3_A" : "R3_B";
 
-        Debug.Log("Loading scene: " + sceneName); // 👈 debug
+        Debug.Log("Loading scene: " + sceneName);
 
         SceneManager.LoadScene(sceneName);
     }
