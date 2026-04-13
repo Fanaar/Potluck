@@ -13,7 +13,7 @@ public class DoughInteraction : MonoBehaviour
     {
         RollingPinController pin = other.GetComponent<RollingPinController>();
 
-        if (pin != null)
+        if (pin != null && pin.IsPickedUp())
         {
             Vector2 movement = pin.GetMovementDelta();
             dough.Roll(movement);

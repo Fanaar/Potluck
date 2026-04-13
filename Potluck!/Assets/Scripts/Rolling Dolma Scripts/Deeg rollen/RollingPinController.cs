@@ -7,14 +7,20 @@ public class RollingPinController : MonoBehaviour
 
     [Header("Rotation")]
     [SerializeField] private float rotationSpeed = 10f;
-
-    private bool isHorizontal = true; // onthoud huidige richting
     [SerializeField] private float directionThreshold = 5f;
+
+    [Header("Fade Out")]
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private float fadeSpeed = 2f;
 
     private Vector3 lastMousePosition;
     private Vector2 movementDelta;
 
     private float targetRotation = 0f;
+
+    private bool isPickedUp = false;
+    private bool isHorizontal = true;
+    private bool isFading = false;
 
     void Start()
     {
@@ -23,9 +29,45 @@ public class RollingPinController : MonoBehaviour
 
     void Update()
     {
+        HandlePickup();
+
+        if (isFading)
+        {
+            FadeOut();
+            return;
+        }
+
+        if (!isPickedUp) return;
+
         MoveWithMouse();
         CalculateMovement();
         UpdateRotation();
+    }
+
+    private void HandlePickup()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Vector2 mouseWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Collider2D hit = Physics2D.OverlapPoint(mouseWorld);
+
+            if (hit != null && hit.gameObject == gameObject)
+            {
+                isPickedUp = true;
+
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Confined;
+            }
+        }
+
+        // Rechtermuisknop = loslaten (optioneel)
+        if (Input.GetMouseButtonDown(1))
+        {
+            isPickedUp = false;
+
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
     }
 
     private void MoveWithMouse()
@@ -51,27 +93,18 @@ public class RollingPinController : MonoBehaviour
         float absX = Mathf.Abs(movementDelta.x);
         float absY = Mathf.Abs(movementDelta.y);
 
-        // alleen switchen als verschil groot genoeg is
         if (isHorizontal)
         {
             if (absY > absX + directionThreshold)
-            {
                 isHorizontal = false;
-            }
         }
         else
         {
             if (absX > absY + directionThreshold)
-            {
                 isHorizontal = true;
-            }
         }
 
-        // rotatie bepalen
-        if (isHorizontal)
-            targetRotation = 90f;
-        else
-            targetRotation = 0f;
+        targetRotation = isHorizontal ? 90f : 0f;
 
         float currentZ = transform.eulerAngles.z;
         float newZ = Mathf.LerpAngle(currentZ, targetRotation, Time.deltaTime * rotationSpeed);
@@ -79,8 +112,34 @@ public class RollingPinController : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, 0, newZ);
     }
 
+    private void FadeOut()
+    {
+        Color c = spriteRenderer.color;
+        c.a = Mathf.Lerp(c.a, 0f, Time.deltaTime * fadeSpeed);
+        spriteRenderer.color = c;
+
+        if (c.a < 0.05f)
+        {
+            gameObject.SetActive(false);
+        }
+    }
+
+    public void StartFadeOut()
+    {
+        isFading = true;
+
+        // cursor terughalen
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+    }
+
     public Vector2 GetMovementDelta()
     {
-        return movementDelta;
+        return isPickedUp ? movementDelta : Vector2.zero;
+    }
+
+    public bool IsPickedUp()
+    {
+        return isPickedUp;
     }
 }
