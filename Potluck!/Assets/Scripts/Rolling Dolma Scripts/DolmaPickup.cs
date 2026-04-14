@@ -67,7 +67,6 @@ public class DolmaPickup : MonoBehaviour
             yield return null;
         }
     }
-
     IEnumerator HandleMotherSequence()
     {
         if (cameraPan != null)
@@ -76,20 +75,20 @@ public class DolmaPickup : MonoBehaviour
             yield return new WaitForSeconds(cameraPan.panDuration);
         }
 
+        MotherSequencePlayer player = null;
+
+        // wacht tot player bestaat EN ready is
+        while (player == null || !player.IsReady)
+        {
+            player = FindObjectOfType<MotherSequencePlayer>();
+            yield return null;
+        }
+
         MotherLine[] lines = RoundManager.Instance.GetCurrentResponse();
 
         if (lines != null && lines.Length > 0)
         {
-            MotherSequencePlayer player = FindObjectOfType<MotherSequencePlayer>();
-
-            if (player != null)
-            {
-                player.PlaySequence(lines);
-            }
-            else
-            {
-                Debug.LogError("MotherSequencePlayer not found in scene!");
-            }
+            player.PlaySequence(lines);
         }
     }
 }
