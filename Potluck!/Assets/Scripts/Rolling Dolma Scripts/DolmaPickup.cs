@@ -80,7 +80,16 @@ public class DolmaPickup : MonoBehaviour
 
         if (lines != null && lines.Length > 0)
         {
-            MotherSequencePlayer.Instance.PlaySequence(lines);
+            MotherSequencePlayer player = FindObjectOfType<MotherSequencePlayer>();
+
+            if (player != null)
+            {
+                player.PlaySequence(lines);
+            }
+            else
+            {
+                Debug.LogError("MotherSequencePlayer not found in scene!");
+            }
         }
     }
 }

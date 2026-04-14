@@ -13,6 +13,9 @@ public class RollingPinController : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private float fadeSpeed = 2f;
 
+    [SerializeField] private FinishBranchScene finishBranchScene;
+    [SerializeField] private float delayAfterFade = 2f;
+
     private Vector3 lastMousePosition;
     private Vector2 movementDelta;
 
@@ -112,15 +115,18 @@ public class RollingPinController : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, 0, newZ);
     }
 
+    private bool hasTriggeredFinish = false;
+
     private void FadeOut()
     {
         Color c = spriteRenderer.color;
         c.a = Mathf.Lerp(c.a, 0f, Time.deltaTime * fadeSpeed);
         spriteRenderer.color = c;
 
-        if (c.a < 0.05f)
+        if (c.a < 0.05f && !hasTriggeredFinish)
         {
-            gameObject.SetActive(false);
+            hasTriggeredFinish = true;
+            StartCoroutine(FinishAfterDelay());
         }
     }
 
@@ -141,5 +147,15 @@ public class RollingPinController : MonoBehaviour
     public bool IsPickedUp()
     {
         return isPickedUp;
+    }
+
+    private System.Collections.IEnumerator FinishAfterDelay()
+    {
+        yield return new WaitForSeconds(delayAfterFade);
+
+        if (finishBranchScene != null)
+        {
+            finishBranchScene.FinishScene();
+        }
     }
 }

@@ -1,12 +1,10 @@
 ﻿using UnityEngine;
-using System.Collections;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class MotherSequencePlayer : MonoBehaviour
 {
-    public static MotherSequencePlayer Instance;
-
     [Header("Scene References")]
     public CameraPanController cameraPan;
 
@@ -15,25 +13,82 @@ public class MotherSequencePlayer : MonoBehaviour
     public TextMeshProUGUI dialogueText;
 
     [Header("Timing")]
-    public float timeBetweenLines = 2.5f;
     public float fadeDuration = 0.3f;
     public float startDelay = 1f;
 
-    void Awake()
+    public bool IsReady { get; private set; } = false;
+
+    private MotherLine[] currentLines;
+    private int currentIndex = 0;
+    private bool isPlaying = false;
+    private bool canClick = false;
+
+    void Start()
     {
-        Instance = this;
-        dialogueText.gameObject.SetActive(false);
+        RebindReferences();
+
+        if (dialogueText != null)
+            dialogueText.gameObject.SetActive(false);
+
+        IsReady = true; // 🔥 BELANGRIJK
+    }
+
+    void Update()
+    {
+        if (!isPlaying || !canClick) return;
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            NextLine();
+        }
+    }
+
+    void RebindReferences()
+    {
+        if (cameraPan == null)
+            cameraPan = FindObjectOfType<CameraPanController>();
+
+        if (motherRenderer == null)
+        {
+            GameObject mother = GameObject.Find("Mother");
+            if (mother != null)
+                motherRenderer = mother.GetComponent<SpriteRenderer>();
+        }
+
+        if (dialogueText == null)
+        {
+            GameObject textObj = GameObject.Find("DialogueText");
+            if (textObj != null)
+                dialogueText = textObj.GetComponent<TextMeshProUGUI>();
+        }
+
+        if (motherRenderer == null || dialogueText == null)
+        {
+            Debug.LogError("MotherSequencePlayer: Missing references!");
+        }
     }
 
     public void PlaySequence(MotherLine[] lines)
     {
-        StopAllCoroutines();
-        StartCoroutine(Play(lines));
+        RebindReferences(); // 🔥 altijd opnieuw binden
+
+        if (lines == null || lines.Length == 0)
+        {
+            Debug.LogError("NO LINES FOUND!");
+            return;
+        }
+
+        currentLines = lines;
+        currentIndex = 0;
+        isPlaying = true;
+        canClick = false;
+
+        StartCoroutine(StartSequence());
     }
 
-    IEnumerator Play(MotherLine[] lines)
+    IEnumerator StartSequence()
     {
-        // camera naar moeder
+        // camera pan
         if (cameraPan != null)
         {
             cameraPan.PanToMother();
@@ -42,20 +97,73 @@ public class MotherSequencePlayer : MonoBehaviour
 
         yield return new WaitForSeconds(startDelay);
 
-        for (int i = 0; i < lines.Length; i++)
+        ShowLine(currentLines[currentIndex]);
+
+        canClick = true;
+    }
+
+    void NextLine()
+    {
+        currentIndex++;
+
+        if (currentIndex >= currentLines.Length)
         {
-            yield return StartCoroutine(PlayLine(lines[i]));
+            EndSequence();
+            return;
         }
 
-        dialogueText.gameObject.SetActive(false);
+        ShowLine(currentLines[currentIndex]);
+    }
 
-        yield return new WaitForSeconds(0.5f);
+    void ShowLine(MotherLine line)
+    {
+        StopAllCoroutines();
+        StartCoroutine(ShowLineRoutine(line));
+    }
+
+    IEnumerator ShowLineRoutine(MotherLine line)
+    {
+        canClick = false;
+
+        // fade out
+        yield return StartCoroutine(Fade(1, 0));
+
+        // sprite
+        if (line.sprite != null && motherRenderer != null)
+            motherRenderer.sprite = line.sprite;
+
+        // fade in
+        yield return StartCoroutine(Fade(0, 1));
+
+        // text
+        if (dialogueText != null)
+        {
+            dialogueText.gameObject.SetActive(true);
+            dialogueText.text = line.text;
+        }
+
+        canClick = true;
+    }
+
+    void EndSequence()
+    {
+        isPlaying = false;
+        canClick = false;
+
+        if (dialogueText != null)
+            dialogueText.gameObject.SetActive(false);
 
         LoadNextScene();
     }
 
     void LoadNextScene()
     {
+        if (GameState.Instance == null)
+        {
+            Debug.LogError("GameState is NULL!");
+            return;
+        }
+
         int round = GameState.Instance.currentRound;
         int choice = GameState.Instance.lastChoice;
 
@@ -63,10 +171,8 @@ public class MotherSequencePlayer : MonoBehaviour
 
         if (round == 0)
             sceneName = (choice == 0) ? "R1_A" : "R1_B";
-
         else if (round == 1)
             sceneName = (choice == 0) ? "R2_A" : "R2_B";
-
         else if (round == 2)
             sceneName = (choice == 0) ? "R3_A" : "R3_B";
 
@@ -75,23 +181,11 @@ public class MotherSequencePlayer : MonoBehaviour
         SceneManager.LoadScene(sceneName);
     }
 
-    IEnumerator PlayLine(MotherLine line)
-    {
-        yield return StartCoroutine(Fade(1, 0));
-
-        if (line.sprite != null)
-            motherRenderer.sprite = line.sprite;
-
-        yield return StartCoroutine(Fade(0, 1));
-
-        dialogueText.gameObject.SetActive(true);
-        dialogueText.text = line.text;
-
-        yield return new WaitForSeconds(timeBetweenLines);
-    }
-
     IEnumerator Fade(float from, float to)
     {
+        if (motherRenderer == null)
+            yield break;
+
         float t = 0;
         Color c = motherRenderer.color;
 
