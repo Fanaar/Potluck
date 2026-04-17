@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ccc82f386c07de4796e43aaf3687aec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dolmaSceneName: DolmaScene4
+  dolmaSceneName: Thank you for playtesting
 --- !u!4 &14165424
 Transform:
   m_ObjectHideFlags: 0

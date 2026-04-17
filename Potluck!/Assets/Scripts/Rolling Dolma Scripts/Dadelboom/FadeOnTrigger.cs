@@ -5,7 +5,15 @@ public class FadeOnTrigger : MonoBehaviour
 {
     private SpriteRenderer sr;
     private bool isFading = false;
+
+    [Header("Fade Settings")]
+    public float fadeDuration = 1f;
+
+    [Header("Finish Settings")]
     public FinishBranchScene finishScene;
+    public float delayBeforeFinish = 5f;
+    public bool useDelay = true;
+
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
@@ -35,15 +43,14 @@ public class FadeOnTrigger : MonoBehaviour
     {
         isFading = true;
 
-        float duration = 1f;
         float time = 0f;
         Color startColor = sr.color;
 
         Debug.Log("Fade gestart");
 
-        while (time < duration)
+        while (time < fadeDuration)
         {
-            float alpha = Mathf.Lerp(1f, 0f, time / duration);
+            float alpha = Mathf.Lerp(1f, 0f, time / fadeDuration);
             sr.color = new Color(startColor.r, startColor.g, startColor.b, alpha);
 
             time += Time.deltaTime;
@@ -54,6 +61,20 @@ public class FadeOnTrigger : MonoBehaviour
 
         Debug.Log("Fade klaar");
 
-        finishScene.FinishScene();
+        // ⏱️ NIEUW: delay
+        if (useDelay)
+        {
+            yield return new WaitForSeconds(delayBeforeFinish);
+        }
+
+        // 🎬 Scene switch
+        if (finishScene != null)
+        {
+            finishScene.FinishScene();
+        }
+        else
+        {
+            Debug.LogWarning("FinishScene script niet gekoppeld!");
+        }
     }
 }

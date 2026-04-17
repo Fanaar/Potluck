@@ -67,6 +67,13 @@ public class Book : MonoBehaviour {
     //current flip mode
     FlipMode mode;
 
+
+    [Header("Finish Settings")]
+    public FinishBranchScene finishScene;
+    public bool triggerOnLastPage = true;
+    public float delayBeforeFinish = 5f;
+    private bool hasTriggeredFinish = false;
+
     void Start()
     {
         if (!canvas) canvas=GetComponentInParent<Canvas>();
@@ -382,6 +389,7 @@ public class Book : MonoBehaviour {
             currentPage += 2;
         else
             currentPage -= 2;
+
         LeftNext.transform.SetParent(BookPanel.transform, true);
         Left.transform.SetParent(BookPanel.transform, true);
         LeftNext.transform.SetParent(BookPanel.transform, true);
@@ -389,11 +397,24 @@ public class Book : MonoBehaviour {
         Right.gameObject.SetActive(false);
         Right.transform.SetParent(BookPanel.transform, true);
         RightNext.transform.SetParent(BookPanel.transform, true);
+
         UpdateSprites();
+
         Shadow.gameObject.SetActive(false);
         ShadowLTR.gameObject.SetActive(false);
+
         if (OnFlip != null)
             OnFlip.Invoke();
+
+        // 🎯 NIEUW: check laatste pagina
+        if (triggerOnLastPage && !hasTriggeredFinish)
+        {
+            if (currentPage >= bookPages.Length)
+            {
+                hasTriggeredFinish = true;
+                StartCoroutine(TriggerFinishAfterDelay());
+            }
+        }
     }
     public void TweenBack()
     {
@@ -444,5 +465,19 @@ public class Book : MonoBehaviour {
         }
         if (onFinish != null)
             onFinish();
+    }
+
+    IEnumerator TriggerFinishAfterDelay()
+    {
+        yield return new WaitForSeconds(delayBeforeFinish);
+
+        if (finishScene != null)
+        {
+            finishScene.FinishScene();
+        }
+        else
+        {
+            Debug.LogWarning("FinishScene script niet gekoppeld!");
+        }
     }
 }
