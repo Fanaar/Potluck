@@ -537,7 +537,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "CONTROLS\nBewegen: AD en \u2190 \u2192 toetsen\n\nKlik om verder te gaan."
+  m_text: 'Houd linkermuisknop ingedrukt en sleep om te vullen.
+
+    Sleep de randen
+    naar binnen om te vouwen.
+
+    Kies het tweede deel van de vraag door eerst die
+    kant te vouwen.
+
+
+    Klik om verder te gaan.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -602,7 +611,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -915.95087, y: 0, z: -813.0371, w: 0}
+  m_margin: {x: -758.4907, y: 0, z: -665.6256, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -843,7 +852,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeImage: {fileID: 286055895}
-  sceneToLoad: Walking in street 1
+  sceneToLoad: DolmaScene
   fadeDuration: 2
 --- !u!4 &1470242355
 Transform:

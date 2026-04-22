@@ -149,7 +149,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controlsPanel: {fileID: 418837854}
-  pauseGame: 1
 --- !u!4 &63666730
 Transform:
   m_ObjectHideFlags: 0
@@ -2706,7 +2705,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 548639d8c187af64eb1cda9d1c3e50b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: Grape Leafs Nostalgia
+  sceneToLoad: Controls 2
 --- !u!212 &1121272233
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Controls/Controls 1.unity
+    guid: 49f6d9dc22ff83e4db4933c17eb58740
+  - enabled: 1
     path: Assets/Scenes/Walking in street 1.unity
     guid: fc359ce99fd5d8a478b39c79a3115411
   - enabled: 1
