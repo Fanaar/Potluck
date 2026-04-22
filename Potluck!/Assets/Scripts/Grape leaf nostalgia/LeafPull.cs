@@ -29,6 +29,7 @@ public class LeafPull : MonoBehaviour
     private bool isHovering = false;
 
     private SpriteRenderer sr;
+    private LeafGameManager manager;
 
     private float baseRotationZ;
     private float driftDirection;
@@ -43,12 +44,14 @@ public class LeafPull : MonoBehaviour
     private void Awake()
     {
         sr = GetComponent<SpriteRenderer>();
+        manager = FindObjectOfType<LeafGameManager>();
+
         baseRotationZ = transform.eulerAngles.z;
 
-        // Randomize starting phase
+        // Random start phase (so leaves don't sync)
         swayTimer = Random.Range(0f, 100f);
 
-        // Prevent Z-fighting when overlapping leaves
+        // Prevent Z-fighting
         transform.position += Vector3.forward * Random.Range(-0.01f, 0.01f);
 
         currentSpeed = idleSwaySpeed;
@@ -68,7 +71,7 @@ public class LeafPull : MonoBehaviour
         float targetAngle = isHovering ? hoverSwayAngle : idleSwayAngle;
         float targetSpeed = isHovering ? hoverSwaySpeed : idleSwaySpeed;
 
-        // Smooth amplitude transition
+        // Smooth amplitude
         currentAngle = Mathf.SmoothDamp(
             currentAngle,
             targetAngle,
@@ -76,14 +79,14 @@ public class LeafPull : MonoBehaviour
             hoverSmoothTime
         );
 
-        // Smooth speed transition
+        // Smooth speed
         currentSpeed = Mathf.Lerp(
             currentSpeed,
             targetSpeed,
             Time.deltaTime * 2f
         );
 
-        // Advance internal timer (fixes speed stacking issue)
+        // Stable timer (no speed stacking bug)
         swayTimer += Time.deltaTime * currentSpeed;
 
         float sway =
@@ -108,23 +111,41 @@ public class LeafPull : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (!isTriggered)
+        if (isTriggered) return;
+
+        isTriggered = true;
+
+        // --- GAME LOGIC ---
+        if (manager != null)
         {
-            isTriggered = true;
-
-            baseRotationZ = transform.eulerAngles.z;
-
-            driftDirection = Random.Range(-1f, 1f);
-            spinDirection = Random.Range(-1f, 1f);
-
-            StartCoroutine(WiggleFallFade());
+            if (CompareTag("goodleaf"))
+            {
+                manager.GoodLeafPlucked();
+            }
+            else if (CompareTag("badleaf"))
+            {
+                manager.BadLeafPlucked();
+            }
         }
+        else
+        {
+            Debug.LogWarning("LeafGameManager not found in scene!");
+        }
+
+        // --- PREP FALL ---
+        baseRotationZ = transform.eulerAngles.z;
+
+        driftDirection = Random.Range(-1f, 1f);
+        spinDirection = Random.Range(-1f, 1f);
+
+        StartCoroutine(WiggleFallFade());
     }
 
     private IEnumerator WiggleFallFade()
     {
         float timer = 0f;
 
+        // --- WIGGLE ---
         while (timer < wiggleDuration)
         {
             float normalized = timer / wiggleDuration;
@@ -141,6 +162,7 @@ public class LeafPull : MonoBehaviour
             yield return null;
         }
 
+        // --- FALL + FADE ---
         float fadeTimer = 0f;
         Color startColor = sr.color;
 
