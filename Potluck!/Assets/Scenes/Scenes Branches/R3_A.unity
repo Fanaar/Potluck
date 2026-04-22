@@ -971,7 +971,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   finishScene: {fileID: 14165423}
-  delay: 5
+  delay: 25
   fadePanel: {fileID: 2076554864}
   fadeDuration: 1
   fadeCompleteBeforeEnd: 2
