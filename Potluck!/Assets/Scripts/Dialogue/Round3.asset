@@ -14,29 +14,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   responses:
   - lines:
-    - text: "Ik voelde me het meest ver van thuis toen Amerika Irak binnenviel in
-        2003.\L"
+    - text: I felt the furthest from home when the United States invaded Iraq in
+        2003.
       sprite: {fileID: 21300000, guid: b8340e73f8b75fc49872a5baa48529cf, type: 3}
-    - text: Elke keer als er oorlog was, waren wij er altijd middenin.
+    - text: Every time there was war, we were always right in the middle of it.
       sprite: {fileID: 21300000, guid: 5b069b0162cb57a42b571b35bdd5f1f7, type: 3}
-    - text: Maar dit keer was ik buiten het land en kon ik niets doen.
+    - text: But this time I was outside the country and could do nothing.
       sprite: {fileID: 21300000, guid: 56ae68dde5e202442af20615dcf168b2, type: 3}
-    - text: Dat voelde heel machteloos.
+    - text: I felt powerless.
       sprite: {fileID: 21300000, guid: fcfa58a935104984581fcd80421f8dde, type: 3}
-    - text: Ik voelde me ook schuldig dat ik niet bij hen was in die ellende.
+    - text: I also felt guilty for not being there with them in that hardship.
       sprite: {fileID: 21300000, guid: 52c1687365c86714b9bfabd17cecca48, type: 3}
-    - text: Alsof ik ver weg was terwijl mijn hart daar nog zat.
+    - text: As if I was far away while my heart was still there.
       sprite: {fileID: 21300000, guid: 32a04d723892c674fb180f1635571ff1, type: 3}
   - lines:
-    - text: "Ik voel me het meest trots op mezelf door mijn kinderen.\L"
+    - text: I feel most proud of myself because of my children.
       sprite: {fileID: 21300000, guid: b8340e73f8b75fc49872a5baa48529cf, type: 3}
-    - text: Dat ik drie hele mooie en goed opgevoede kinderen op de wereld heb gezet.
+    - text: That I have brought three beautiful and well raised children into the
+        world.
       sprite: {fileID: 21300000, guid: 5b069b0162cb57a42b571b35bdd5f1f7, type: 3}
-    - text: Daar ben ik echt trots op.
+    - text: I am truly proud of that.
       sprite: {fileID: 21300000, guid: 56ae68dde5e202442af20615dcf168b2, type: 3}
-    - text: Dat is voor mij het belangrijkste wat er is.
+    - text: That is the most important thing to me.
       sprite: {fileID: 21300000, guid: 5a9373ce436dddd41b08b8d197238231, type: 3}
-    - text: Alles wat ik heb meegemaakt valt daarbij in het niet.
+    - text: Everything I have been through fades in comparison to that.
       sprite: {fileID: 21300000, guid: 52c1687365c86714b9bfabd17cecca48, type: 3}
-    - text: Dat is uiteindelijk het enige wat echt telt voor mij.
+    - text: In the end, that is the only thing that really matters to me.
       sprite: {fileID: 21300000, guid: 32a04d723892c674fb180f1635571ff1, type: 3}
