@@ -14,31 +14,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   responses:
   - lines:
-    - text: Ik denk dat ik het echt voelde toen ik Schiphol verliet.
+    - text: I think I really felt it when I left Schiphol.
       sprite: {fileID: 21300000, guid: b8340e73f8b75fc49872a5baa48529cf, type: 3}
-    - text: " Alles was zo groen, echt t\xE9 groen."
+    - text: Everything was so green, almost too green.
       sprite: {fileID: 21300000, guid: 5b069b0162cb57a42b571b35bdd5f1f7, type: 3}
-    - text: Overal om ons heen zag je groen, terwijl ik gewend was aan geel in Irak.
+    - text: Everywhere around us was green, while I was used to yellow in Iraq.
       sprite: {fileID: 21300000, guid: 56ae68dde5e202442af20615dcf168b2, type: 3}
-    - text: Het voelde meteen anders, alsof ik in een andere wereld was.
+    - text: It immediately felt different, like I was in another world.
       sprite: {fileID: 21300000, guid: 5a9373ce436dddd41b08b8d197238231, type: 3}
-    - text: Die eerste dag zag ik een oude vrouw op een fiets en mijn hart begon
-        sneller te kloppen.
+    - text: On that first day, I saw an elderly woman riding a bicycle and my heart
+        started beating faster.
       sprite: {fileID: 21300000, guid: 52c1687365c86714b9bfabd17cecca48, type: 3}
-    - text: 'Ik dacht echt: als ze nu valt, gaat ze dood, want waar ik vandaan kom
-        deden oudere vrouwen dat soort dingen helemaal niet.'
+    - text: I honestly thought if she falls now, she will die, because where I come
+        from, older women did not do things like that at all.
       sprite: {fileID: 21300000, guid: 32a04d723892c674fb180f1635571ff1, type: 3}
   - lines:
-    - text: De eerste keer dat ik Irak moest verlaten ging ik naar Iran.
+    - text: The first time I had to leave Iraq, I went to Iran.
       sprite: {fileID: 21300000, guid: b8340e73f8b75fc49872a5baa48529cf, type: 3}
-    - text: Omdat we Koerden waren en bij de peshmerga hoorden, werden we het land
-        uitgezet.
+    - text: Because we were Kurds and connected to the peshmerga, we were expelled
+        from the country.
       sprite: {fileID: 21300000, guid: 5b069b0162cb57a42b571b35bdd5f1f7, type: 3}
-    - text: Ik was toen tien jaar oud en het zijn geen fijne herinneringen.
+    - text: I was ten years old at the time, and they are not pleasant memories.
       sprite: {fileID: 21300000, guid: 56ae68dde5e202442af20615dcf168b2, type: 3}
-    - text: Maar er was daar weinig te doen, dus ik begon te helpen met koken.
+    - text: But there was not much to do there, so I started helping with cooking.
       sprite: {fileID: 21300000, guid: 5a9373ce436dddd41b08b8d197238231, type: 3}
-    - text: Ik leerde hoe ik kobeh moest vullen en hoe ik brood moest kneden.
+    - text: I learned how to fill kobeh and how to knead bread.
       sprite: {fileID: 21300000, guid: 52c1687365c86714b9bfabd17cecca48, type: 3}
-    - text: Dat was de eerste keer dat ik echt het gevoel had dat ik kon helpen.
+    - text: That was the first time I really felt like I could help.
       sprite: {fileID: 21300000, guid: 32a04d723892c674fb180f1635571ff1, type: 3}
