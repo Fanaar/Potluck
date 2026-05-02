@@ -1689,7 +1689,7 @@ GameObject:
   - component: {fileID: 952775190}
   - component: {fileID: 952775189}
   m_Layer: 0
-  m_Name: Block
+  m_Name: Idle
   m_TagString: idle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

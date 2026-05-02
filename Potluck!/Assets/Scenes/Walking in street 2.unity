@@ -1012,7 +1012,7 @@ GameObject:
   - component: {fileID: 332829267}
   - component: {fileID: 332829266}
   m_Layer: 0
-  m_Name: Block
+  m_Name: Idle
   m_TagString: idle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
