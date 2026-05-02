@@ -218,6 +218,7 @@ GameObject:
   - component: {fileID: 545163899}
   - component: {fileID: 545163898}
   - component: {fileID: 545163897}
+  - component: {fileID: 545163901}
   m_Layer: 0
   m_Name: Rolling stick
   m_TagString: Untagged
@@ -360,6 +361,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &545163901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 545163896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ef75008d6e6bae4397c2b14bd6a2b64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverColor: {r: 0.79622644, g: 0.62064886, b: 0.34102526, a: 1}
+  fadeSpeed: 5
 --- !u!1 &585290694
 GameObject:
   m_ObjectHideFlags: 0

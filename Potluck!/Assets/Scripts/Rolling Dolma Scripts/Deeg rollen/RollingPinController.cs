@@ -24,10 +24,11 @@ public class RollingPinController : MonoBehaviour
     private bool isPickedUp = false;
     private bool isHorizontal = true;
     private bool isFading = false;
-
+    private HoverHighlight hoverHighlight;
     void Start()
     {
         lastMousePosition = Input.mousePosition;
+        hoverHighlight = GetComponent<HoverHighlight>();
     }
 
     void Update()
@@ -57,6 +58,10 @@ public class RollingPinController : MonoBehaviour
             if (hit != null && hit.gameObject == gameObject)
             {
                 isPickedUp = true;
+
+                // 👇 Hover UIT
+                if (hoverHighlight != null)
+                    hoverHighlight.DisableHover();
 
                 Cursor.visible = false;
                 Cursor.lockState = CursorLockMode.Confined;
