@@ -2471,8 +2471,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questionStarts:
   - "When did you feel\u2026 "
-  - "What do you sometimes miss\u2026 "
-  - "When did you think\u2026"
   cursorStuffing: {fileID: 0}
   stuffingPrefab: {fileID: 7023303867879498235, guid: 258da5b9a4d083c4f83177921afb2f0d, type: 3}
 --- !u!61 &1618222341
