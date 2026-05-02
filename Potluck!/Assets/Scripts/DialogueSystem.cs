@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
@@ -37,11 +37,12 @@ public class DialogueSystem : MonoBehaviour
     {
         if (isTyping)
         {
-            // Maak zin meteen af
+            // tekst meteen afmaken
             StopCoroutine(typingCoroutine);
             dialogueText.text = dialogueLines[currentIndex];
             UpdateBackgroundSize();
             isTyping = false;
+            UpdateButtons();
             return;
         }
 
@@ -49,7 +50,6 @@ public class DialogueSystem : MonoBehaviour
         {
             currentIndex++;
             ShowLine();
-            UpdateButtons();
         }
     }
 
@@ -68,14 +68,18 @@ public class DialogueSystem : MonoBehaviour
         if (typingCoroutine != null)
             StopCoroutine(typingCoroutine);
 
+        // ❗ knoppen uitzetten terwijl tekst typt
+        nextButton.gameObject.SetActive(false);
+        prevButton.gameObject.SetActive(false);
+        endButton.gameObject.SetActive(false);
+
         typingCoroutine = StartCoroutine(TypeText(dialogueLines[currentIndex]));
     }
 
     IEnumerator TypeText(string line)
     {
-        isTyping = true;
         dialogueText.text = "";
-
+        isTyping = true;
         foreach (char letter in line.ToCharArray())
         {
             dialogueText.text += letter;
@@ -84,7 +88,10 @@ public class DialogueSystem : MonoBehaviour
         }
 
         isTyping = false;
+        // ❗ tekst is klaar → knoppen tonen
+        UpdateButtons();
     }
+
     void UpdateBackgroundSize()
     {
         float padding = 40f;
