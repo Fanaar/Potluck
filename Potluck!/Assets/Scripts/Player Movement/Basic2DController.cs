@@ -8,8 +8,8 @@ public class Basic2DController : MonoBehaviour
     private Animator animator;
     private Transform visual;
 
-    private float moveInput;
     private Vector3 originalScale;
+    private bool isStopped = false;
 
     void Start()
     {
@@ -22,18 +22,43 @@ public class Basic2DController : MonoBehaviour
 
     void Update()
     {
-        moveInput = Input.GetAxisRaw("Horizontal");
+        if (isStopped)
+        {
+            animator.SetBool("isWalking", false);
+            return;
+        }
 
-        animator.SetBool("isWalking", Mathf.Abs(moveInput) > 0.01f);
+        // Altijd naar rechts lopen
+        animator.SetBool("isWalking", true);
 
-        if (moveInput > 0)
-            visual.localScale = new Vector3(Mathf.Abs(originalScale.x), originalScale.y, originalScale.z);
-        else if (moveInput < 0)
-            visual.localScale = new Vector3(-Mathf.Abs(originalScale.x), originalScale.y, originalScale.z);
+        visual.localScale = new Vector3(Mathf.Abs(originalScale.x), originalScale.y, originalScale.z);
     }
 
     void FixedUpdate()
     {
-        rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
+        if (isStopped)
+        {
+            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
+            return;
+        }
+
+        rb.linearVelocity = new Vector2(moveSpeed, rb.linearVelocity.y);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("idle"))
+        {
+            isStopped = true;
+        }
+    }
+
+    // Gebruik deze als je triggers gebruikt i.p.v. colliders
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("idle"))
+        {
+            isStopped = true;
+        }
     }
 }

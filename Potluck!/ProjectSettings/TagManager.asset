@@ -9,6 +9,7 @@ TagManager:
   - Target
   - goodleaf
   - badleaf
+  - idle
   layers:
   - Default
   - TransparentFX
