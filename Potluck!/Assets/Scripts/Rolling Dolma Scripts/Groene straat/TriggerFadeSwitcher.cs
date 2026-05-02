@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 public class TriggerFadeSwitcher : MonoBehaviour
@@ -10,16 +10,67 @@ public class TriggerFadeSwitcher : MonoBehaviour
     [Header("Fade Settings")]
     public float fadeDuration = 1f;
 
+    [Header("Hover Settings")]
+    public float hoverFadeSpeed = 5f;
+    public float hoverDarkenAmount = 0.7f; // 1 = normaal, lager = donkerder
+
     [Header("Progress Manager")]
     public TriggerProgressManager progressManager;
 
     private bool hasTriggered = false;
+    private bool isHovering = false;
+
+    private Color originalColor;
+
+    void Start()
+    {
+        if (objectToFadeOut != null)
+        {
+            originalColor = objectToFadeOut.color;
+        }
+    }
+
+    void Update()
+    {
+        if (hasTriggered || objectToFadeOut == null) return;
+
+        // 👇 target kleur (alleen RGB aanpassen, alpha behouden)
+        Color targetColor = originalColor;
+
+        if (isHovering)
+        {
+            targetColor.r *= hoverDarkenAmount;
+            targetColor.g *= hoverDarkenAmount;
+            targetColor.b *= hoverDarkenAmount;
+        }
+
+        targetColor.a = objectToFadeOut.color.a; // alpha NIET aanpassen
+
+        objectToFadeOut.color = Color.Lerp(
+            objectToFadeOut.color,
+            targetColor,
+            Time.deltaTime * hoverFadeSpeed
+        );
+    }
+
+    private void OnMouseEnter()
+    {
+        if (hasTriggered) return;
+        isHovering = true;
+    }
+
+    private void OnMouseExit()
+    {
+        if (hasTriggered) return;
+        isHovering = false;
+    }
 
     private void OnMouseDown()
     {
         if (hasTriggered) return;
 
         hasTriggered = true;
+        isHovering = false;
 
         StartCoroutine(FadeSequence());
 
@@ -36,7 +87,6 @@ public class TriggerFadeSwitcher : MonoBehaviour
         Color outColor = objectToFadeOut.color;
         Color inColor = objectToFadeIn.color;
 
-        // Zorg dat de "in" object start op alpha 0
         inColor.a = 0;
         objectToFadeIn.color = inColor;
 
@@ -45,7 +95,7 @@ public class TriggerFadeSwitcher : MonoBehaviour
             time += Time.deltaTime;
             float t = time / fadeDuration;
 
-            // Fade out
+            // Fade out (alleen alpha)
             outColor.a = Mathf.Lerp(1, 0, t);
             objectToFadeOut.color = outColor;
 
@@ -56,7 +106,6 @@ public class TriggerFadeSwitcher : MonoBehaviour
             yield return null;
         }
 
-        // Zeker zetten
         outColor.a = 0;
         inColor.a = 1;
 
