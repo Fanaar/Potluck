@@ -111,11 +111,31 @@ public class UIQuestionPreview : MonoBehaviour
 
         leftChoiceText.text = left + " →";
         rightChoiceText.text = "← " + right;
+
+        PreviewNone(); // 👈 belangrijk
     }
 
     public void HideEndingChoices()
     {
         leftChoiceText.gameObject.SetActive(false);
         rightChoiceText.gameObject.SetActive(false);
+    }
+
+    public void PreviewLeft()
+    {
+        leftChoiceText.alpha = 1f;
+        rightChoiceText.alpha = 0.3f;
+    }
+
+    public void PreviewRight()
+    {
+        leftChoiceText.alpha = 0.3f;
+        rightChoiceText.alpha = 1f;
+    }
+
+    public void PreviewNone()
+    {
+        leftChoiceText.alpha = 1f;
+        rightChoiceText.alpha = 1f;
     }
 }

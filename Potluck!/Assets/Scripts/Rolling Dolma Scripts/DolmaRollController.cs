@@ -30,6 +30,16 @@ public class DolmaRollController : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
     }
 
+    void Update()
+    {
+        if (state != 1 || isTransitioning) return;
+
+        Vector2 currentMouse = Input.mousePosition;
+        Vector2 dir = currentMouse - dragStart;
+
+        HandleHover(dir);
+    }
+
     void OnMouseDown()
     {
         if (state >= 4 || isTransitioning) return;
@@ -188,5 +198,24 @@ public class DolmaRollController : MonoBehaviour
     public void AddStuffing()
     {
         StartCoroutine(CrossFadeToSprite(leafWithStuffing));
+    }
+
+    void HandleHover(Vector2 dir)
+    {
+        if (dir.x < -30)
+        {
+            // hover LEFT
+            UIQuestionPreview.Instance.PreviewLeft();
+        }
+        else if (dir.x > 30)
+        {
+            // hover RIGHT
+            UIQuestionPreview.Instance.PreviewRight();
+        }
+        else
+        {
+            // neutraal (optioneel)
+            UIQuestionPreview.Instance.PreviewNone();
+        }
     }
 }
