@@ -3,13 +3,12 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
-using TMPro; // toevoegen bovenaan
+using TMPro;
 
 public class DialogueSystem : MonoBehaviour
 {
     [Header("UI References")]
     public TMP_Text dialogueText;
-    public RectTransform backgroundBox;
     public Button nextButton;
     public Button prevButton;
     public Button endButton;
@@ -17,31 +16,34 @@ public class DialogueSystem : MonoBehaviour
     [Header("Dialogue Settings")]
     [TextArea(2, 5)]
     public List<string> dialogueLines;
-    public float typingSpeed = 0.03f;
+
+    public float revealSpeed = 0.02f;
 
     [Header("Scene Settings")]
     public string nextSceneName;
 
     private int currentIndex = 0;
-    private Coroutine typingCoroutine;
-    private bool isTyping = false;
+    private Coroutine revealCoroutine;
+    private bool isRevealing = false;
 
     void Start()
     {
-        ShowLine();
-        UpdateButtons();
+        nextButton.gameObject.SetActive(false);
+        prevButton.gameObject.SetActive(false);
         endButton.gameObject.SetActive(false);
+
+        ShowLine();
     }
 
     public void NextLine()
     {
-        if (isTyping)
+        if (isRevealing)
         {
-            // tekst meteen afmaken
-            StopCoroutine(typingCoroutine);
-            dialogueText.text = dialogueLines[currentIndex];
-            UpdateBackgroundSize();
-            isTyping = false;
+            StopCoroutine(revealCoroutine);
+
+            dialogueText.maxVisibleCharacters = dialogueText.text.Length;
+
+            isRevealing = false;
             UpdateButtons();
             return;
         }
@@ -59,44 +61,41 @@ public class DialogueSystem : MonoBehaviour
         {
             currentIndex--;
             ShowLine();
-            UpdateButtons();
         }
     }
 
     void ShowLine()
     {
-        if (typingCoroutine != null)
-            StopCoroutine(typingCoroutine);
+        if (revealCoroutine != null)
+            StopCoroutine(revealCoroutine);
 
-        // ❗ knoppen uitzetten terwijl tekst typt
         nextButton.gameObject.SetActive(false);
         prevButton.gameObject.SetActive(false);
         endButton.gameObject.SetActive(false);
 
-        typingCoroutine = StartCoroutine(TypeText(dialogueLines[currentIndex]));
+        revealCoroutine = StartCoroutine(RevealText(dialogueLines[currentIndex]));
     }
 
-    IEnumerator TypeText(string line)
+    IEnumerator RevealText(string line)
     {
-        dialogueText.text = "";
-        isTyping = true;
-        foreach (char letter in line.ToCharArray())
+        isRevealing = true;
+
+        dialogueText.text = line;
+
+        dialogueText.ForceMeshUpdate();
+
+        int totalVisibleCharacters = dialogueText.textInfo.characterCount;
+
+        dialogueText.maxVisibleCharacters = 0;
+
+        for (int i = 0; i <= totalVisibleCharacters; i++)
         {
-            dialogueText.text += letter;
-            UpdateBackgroundSize();
-            yield return new WaitForSeconds(typingSpeed);
+            dialogueText.maxVisibleCharacters = i;
+            yield return new WaitForSeconds(revealSpeed);
         }
 
-        isTyping = false;
-        // ❗ tekst is klaar → knoppen tonen
+        isRevealing = false;
         UpdateButtons();
-    }
-
-    void UpdateBackgroundSize()
-    {
-        float padding = 40f;
-        Vector2 textSize = new Vector2(dialogueText.preferredWidth, dialogueText.preferredHeight);
-        backgroundBox.sizeDelta = textSize + new Vector2(padding, padding);
     }
 
     void UpdateButtons()
