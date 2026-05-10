@@ -1497,7 +1497,7 @@ MonoBehaviour:
   - '" That''s when she tells me about the past, and each time I get to know her
     a little better. "'
   revealSpeed: 0.02
-  nextSceneName: Grape Leafs Nostalgia
+  nextSceneName: DolmaScene
 --- !u!4 &752441880
 Transform:
   m_ObjectHideFlags: 0
