@@ -44,7 +44,10 @@ public class DialogueSystem : MonoBehaviour
             dialogueText.maxVisibleCharacters = dialogueText.text.Length;
 
             isRevealing = false;
+
+            PositionButtons();
             UpdateButtons();
+
             return;
         }
 
@@ -95,6 +98,7 @@ public class DialogueSystem : MonoBehaviour
         }
 
         isRevealing = false;
+        PositionButtons();
         UpdateButtons();
     }
 
@@ -111,5 +115,40 @@ public class DialogueSystem : MonoBehaviour
     public void LoadNextScene()
     {
         SceneManager.LoadScene(nextSceneName);
+    }
+
+    void PositionButtons()
+    {
+        dialogueText.ForceMeshUpdate();
+
+        float renderedHeight = dialogueText.textBounds.size.y;
+
+        float buttonOffset = 80f;
+
+        float buttonY =
+            dialogueText.rectTransform.localPosition.y
+            - renderedHeight
+            - buttonOffset;
+
+        nextButton.transform.localPosition =
+            new Vector3(
+                nextButton.transform.localPosition.x,
+                buttonY,
+                nextButton.transform.localPosition.z
+            );
+
+        prevButton.transform.localPosition =
+            new Vector3(
+                prevButton.transform.localPosition.x,
+                buttonY,
+                prevButton.transform.localPosition.z
+            );
+
+        endButton.transform.localPosition =
+            new Vector3(
+                endButton.transform.localPosition.x,
+                buttonY,
+                endButton.transform.localPosition.z
+            );
     }
 }

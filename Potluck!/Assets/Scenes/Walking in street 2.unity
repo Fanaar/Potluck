@@ -1492,9 +1492,9 @@ MonoBehaviour:
   - '" There is a difference between us, in culture and in generation. "'
   - '" But when we cook together, that changes. "'
   - '" Especially when we make dolma. "'
-  - '" Ever since I was little, I have helped her roll them, and those are the moments
-    when we really talk. "'
-  - '" That is when she tells me about the past, and each time I get to know her
+  - '" Ever since I was little, I''ve helped her roll them."'
+  - '" Those are the moments when we really talk. "'
+  - '" That''s when she tells me about the past, and each time I get to know her
     a little better. "'
   revealSpeed: 0.02
   nextSceneName: Grape Leafs Nostalgia
