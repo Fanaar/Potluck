@@ -13,6 +13,10 @@ public class DialogueSystem : MonoBehaviour
     public Button prevButton;
     public Button endButton;
 
+    [Header("Fade Settings")]
+    public CanvasGroup fadeCanvasGroup;
+    public float fadeDuration = 1f;
+
     [Header("Dialogue Settings")]
     [TextArea(2, 5)]
     public List<string> dialogueLines;
@@ -114,6 +118,28 @@ public class DialogueSystem : MonoBehaviour
 
     public void LoadNextScene()
     {
+        StartCoroutine(FadeAndLoadScene());
+    }
+
+    IEnumerator FadeAndLoadScene()
+    {
+        float timer = 0f;
+
+        // blokkeer input tijdens fade
+        fadeCanvasGroup.blocksRaycasts = true;
+        fadeCanvasGroup.interactable = true;
+
+        while (timer < fadeDuration)
+        {
+            timer += Time.deltaTime;
+
+            fadeCanvasGroup.alpha = timer / fadeDuration;
+
+            yield return null;
+        }
+
+        fadeCanvasGroup.alpha = 1f;
+
         SceneManager.LoadScene(nextSceneName);
     }
 
