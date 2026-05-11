@@ -1801,7 +1801,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Hmm.. deze is misschien niet goed voor dolma.
+  m_text: "\rHmm.. this one might not be suitable for dolma."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d42252881f4b1114bb423a75a8ff36b8, type: 2}
   m_sharedMaterial: {fileID: 2083759410491792770, guid: d42252881f4b1114bb423a75a8ff36b8, type: 2}

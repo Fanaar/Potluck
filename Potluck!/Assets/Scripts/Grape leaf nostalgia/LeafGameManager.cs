@@ -35,7 +35,7 @@ public class LeafGameManager : MonoBehaviour
         if (feedbackText != null)
         {
             StopAllCoroutines();
-            StartCoroutine(ShowMessage("hmm deze is misschien niet goed voor dolma"));
+            StartCoroutine(ShowMessage("Hmm.. this one might not be suitable for dolma."));
         }
     }
 
