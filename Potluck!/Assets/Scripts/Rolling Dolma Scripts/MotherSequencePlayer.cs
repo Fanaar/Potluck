@@ -16,6 +16,8 @@ public class MotherSequencePlayer : MonoBehaviour
     public float fadeDuration = 0.3f;
     public float startDelay = 1f;
 
+    [Header("Screen Fade")]
+    public ScreenFade screenFade;
     public bool IsReady { get; private set; } = false;
 
     private MotherLine[] currentLines;
@@ -153,15 +155,17 @@ public class MotherSequencePlayer : MonoBehaviour
         if (dialogueText != null)
             dialogueText.gameObject.SetActive(false);
 
-        LoadNextScene();
+        StartCoroutine(LoadNextSceneRoutine());
     }
 
-    void LoadNextScene()
+    IEnumerator LoadNextSceneRoutine()
     {
+        Debug.Log("LoadNextSceneRoutine START");
+
         if (GameState.Instance == null)
         {
             Debug.LogError("GameState is NULL!");
-            return;
+            yield break;
         }
 
         int round = GameState.Instance.currentRound;
@@ -176,7 +180,27 @@ public class MotherSequencePlayer : MonoBehaviour
         else if (round == 2)
             sceneName = (choice == 0) ? "R3_A" : "R3_B";
 
-        Debug.Log("Loading scene: " + sceneName);
+        Debug.Log("Scene chosen: " + sceneName);
+
+        // CHECK SCREENFADE
+        if (screenFade == null)
+        {
+            Debug.LogError("ScreenFade reference is NULL!");
+        }
+        else
+        {
+            Debug.Log("Calling FadeOut()");
+
+            screenFade.FadeOut();
+
+            Debug.Log("Waiting for fade duration: " + screenFade.fadeDuration);
+
+            yield return new WaitForSeconds(screenFade.fadeDuration);
+
+            Debug.Log("Fade wait finished");
+        }
+
+        Debug.Log("Loading scene NOW");
 
         SceneManager.LoadScene(sceneName);
     }
