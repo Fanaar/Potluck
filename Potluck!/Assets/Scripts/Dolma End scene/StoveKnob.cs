@@ -13,6 +13,9 @@ public class StoveKnob : MonoBehaviour
     [Header("Rotation Feel")]
     public float rotationSpeed = 5f;
 
+    [Header("Cinematic")]
+    public StoveCinematic cinematic;
+
     private bool isDragging = false;
     private bool isOff = false;
 
@@ -61,16 +64,20 @@ public class StoveKnob : MonoBehaviour
             rotationSpeed * Time.deltaTime
         );
 
-        // TURN OFF
         if (angle <= turnOffThreshold)
         {
             isOff = true;
 
             stoveOnObject.SetActive(false);
 
-            // Snap to exact 0
             transform.rotation =
                 Quaternion.Euler(0, 0, 0);
+
+            // START CINEMATIC
+            if (cinematic != null)
+            {
+                cinematic.StartCinematic();
+            }
         }
     }
 
