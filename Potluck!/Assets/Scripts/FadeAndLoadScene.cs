@@ -14,7 +14,7 @@ public class FadeAndLoadScene : MonoBehaviour
     [Header("Fade Settings")]
     [SerializeField] private float fadeDuration = 1f;
 
-    private bool isTransitioning = false; // voorkomt spam klikken
+    private bool isTransitioning = false;
 
     private void Start()
     {
@@ -23,15 +23,18 @@ public class FadeAndLoadScene : MonoBehaviour
 
     public void StartTransition()
     {
-        if (isTransitioning) return;
+        if (isTransitioning)
+            return;
 
         isTransitioning = true;
+
         StartCoroutine(FadeOutAndLoad());
     }
 
     IEnumerator FadeIn()
     {
         float t = 0f;
+
         Color c = fadeImage.color;
 
         c.a = 1f;
@@ -40,8 +43,11 @@ public class FadeAndLoadScene : MonoBehaviour
         while (t < fadeDuration)
         {
             t += Time.deltaTime;
+
             c.a = 1f - (t / fadeDuration);
+
             fadeImage.color = c;
+
             yield return null;
         }
 
@@ -55,11 +61,22 @@ public class FadeAndLoadScene : MonoBehaviour
 
         Color c = fadeImage.color;
 
+        // fade ambience tegelijk starten
+        SceneAmbience ambience =
+            FindObjectOfType<SceneAmbience>();
+
+        if (ambience != null)
+        {
+            ambience.FadeOutAndStop();
+        }
+
         while (t < fadeDuration)
         {
             t += Time.deltaTime;
 
-            float alpha = Mathf.Clamp01(t / fadeDuration);
+            float alpha =
+                Mathf.Clamp01(t / fadeDuration);
+
             c.a = alpha;
 
             fadeImage.color = c;
@@ -67,7 +84,7 @@ public class FadeAndLoadScene : MonoBehaviour
             yield return null;
         }
 
-        // Zorg dat hij écht 100% zwart is
+        // echt volledig zwart
         c.a = 1f;
         fadeImage.color = c;
 
