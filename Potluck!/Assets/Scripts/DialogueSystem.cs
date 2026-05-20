@@ -36,6 +36,14 @@ public class DialogueSystem : MonoBehaviour
         prevButton.gameObject.SetActive(false);
         endButton.gameObject.SetActive(false);
 
+        // zorg dat fade canvas transparant start
+        if (fadeCanvasGroup != null)
+        {
+            fadeCanvasGroup.alpha = 0f;
+            fadeCanvasGroup.blocksRaycasts = false;
+            fadeCanvasGroup.interactable = false;
+        }
+
         ShowLine();
     }
 
@@ -45,7 +53,8 @@ public class DialogueSystem : MonoBehaviour
         {
             StopCoroutine(revealCoroutine);
 
-            dialogueText.maxVisibleCharacters = dialogueText.text.Length;
+            dialogueText.maxVisibleCharacters =
+                dialogueText.text.Length;
 
             isRevealing = false;
 
@@ -80,7 +89,10 @@ public class DialogueSystem : MonoBehaviour
         prevButton.gameObject.SetActive(false);
         endButton.gameObject.SetActive(false);
 
-        revealCoroutine = StartCoroutine(RevealText(dialogueLines[currentIndex]));
+        revealCoroutine =
+            StartCoroutine(
+                RevealText(dialogueLines[currentIndex])
+            );
     }
 
     IEnumerator RevealText(string line)
@@ -91,17 +103,20 @@ public class DialogueSystem : MonoBehaviour
 
         dialogueText.ForceMeshUpdate();
 
-        int totalVisibleCharacters = dialogueText.textInfo.characterCount;
+        int totalVisibleCharacters =
+            dialogueText.textInfo.characterCount;
 
         dialogueText.maxVisibleCharacters = 0;
 
         for (int i = 0; i <= totalVisibleCharacters; i++)
         {
             dialogueText.maxVisibleCharacters = i;
+
             yield return new WaitForSeconds(revealSpeed);
         }
 
         isRevealing = false;
+
         PositionButtons();
         UpdateButtons();
     }
@@ -110,7 +125,8 @@ public class DialogueSystem : MonoBehaviour
     {
         prevButton.gameObject.SetActive(currentIndex > 0);
 
-        bool isLastLine = currentIndex >= dialogueLines.Count - 1;
+        bool isLastLine =
+            currentIndex >= dialogueLines.Count - 1;
 
         nextButton.gameObject.SetActive(!isLastLine);
         endButton.gameObject.SetActive(isLastLine);
@@ -125,15 +141,26 @@ public class DialogueSystem : MonoBehaviour
     {
         float timer = 0f;
 
+        // fade ambience tegelijk starten
+        SceneAmbience ambience =
+            FindObjectOfType<SceneAmbience>();
+
+        if (ambience != null)
+        {
+            ambience.FadeOutAndStop();
+        }
+
         // blokkeer input tijdens fade
         fadeCanvasGroup.blocksRaycasts = true;
         fadeCanvasGroup.interactable = true;
 
+        // screen fade
         while (timer < fadeDuration)
         {
             timer += Time.deltaTime;
 
-            fadeCanvasGroup.alpha = timer / fadeDuration;
+            fadeCanvasGroup.alpha =
+                timer / fadeDuration;
 
             yield return null;
         }
@@ -147,7 +174,8 @@ public class DialogueSystem : MonoBehaviour
     {
         dialogueText.ForceMeshUpdate();
 
-        float renderedHeight = dialogueText.textBounds.size.y;
+        float renderedHeight =
+            dialogueText.textBounds.size.y;
 
         float buttonOffset = 80f;
 

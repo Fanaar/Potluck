@@ -20,6 +20,16 @@ public class FinishBranchScene : MonoBehaviour
     {
         float timer = 0f;
 
+        // fade ambience tegelijk starten
+        SceneAmbience ambience =
+            FindObjectOfType<SceneAmbience>();
+
+        if (ambience != null)
+        {
+            ambience.FadeOutAndStop();
+        }
+
+
         // fade naar zwart
         while (timer < fadeDuration)
         {
