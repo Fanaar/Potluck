@@ -182,6 +182,15 @@ public class MotherSequencePlayer : MonoBehaviour
 
         Debug.Log("Scene chosen: " + sceneName);
 
+
+        // fade ambience audio
+        SceneAmbience ambience = FindObjectOfType<SceneAmbience>();
+
+        if (ambience != null)
+        {
+            ambience.FadeOutAndStop();
+        }
+
         // CHECK SCREENFADE
         if (screenFade == null)
         {
