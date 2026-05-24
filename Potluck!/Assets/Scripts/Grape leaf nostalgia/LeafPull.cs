@@ -25,6 +25,18 @@ public class LeafPull : MonoBehaviour
     [Header("Fade Settings")]
     [SerializeField] private float fadeDuration = 1f;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioSource;
+
+    [Tooltip("4 random hover sounds")]
+    [SerializeField] private AudioClip[] hoverClips;
+
+    [Tooltip("3 random pluck sounds")]
+    [SerializeField] private AudioClip[] pluckClips;
+
+    [SerializeField] private float hoverVolume = 0.5f;
+    [SerializeField] private float pluckVolume = 1f;
+
     private bool isTriggered = false;
     private bool isHovering = false;
 
@@ -48,11 +60,13 @@ public class LeafPull : MonoBehaviour
 
         baseRotationZ = transform.eulerAngles.z;
 
-        // Random start phase (so leaves don't sync)
+        // Random start phase
         swayTimer = Random.Range(0f, 100f);
 
         // Prevent Z-fighting
-        transform.position += Vector3.forward * Random.Range(-0.01f, 0.01f);
+        transform.position +=
+            Vector3.forward *
+            Random.Range(-0.01f, 0.01f);
 
         currentSpeed = idleSwaySpeed;
         currentAngle = idleSwayAngle;
@@ -68,8 +82,15 @@ public class LeafPull : MonoBehaviour
 
     private void UpdateSway()
     {
-        float targetAngle = isHovering ? hoverSwayAngle : idleSwayAngle;
-        float targetSpeed = isHovering ? hoverSwaySpeed : idleSwaySpeed;
+        float targetAngle =
+            isHovering
+            ? hoverSwayAngle
+            : idleSwayAngle;
+
+        float targetSpeed =
+            isHovering
+            ? hoverSwaySpeed
+            : idleSwaySpeed;
 
         // Smooth amplitude
         currentAngle = Mathf.SmoothDamp(
@@ -86,34 +107,45 @@ public class LeafPull : MonoBehaviour
             Time.deltaTime * 2f
         );
 
-        // Stable timer (no speed stacking bug)
         swayTimer += Time.deltaTime * currentSpeed;
 
         float sway =
             Mathf.Sin(swayTimer) * 0.7f +
             Mathf.Sin(swayTimer * 0.5f) * 0.3f;
 
-        float finalAngle = baseRotationZ + sway * currentAngle;
-        transform.rotation = Quaternion.Euler(0f, 0f, finalAngle);
+        float finalAngle =
+            baseRotationZ + sway * currentAngle;
+
+        transform.rotation =
+            Quaternion.Euler(0f, 0f, finalAngle);
     }
 
     private void OnMouseEnter()
     {
         if (!isTriggered)
+        {
             isHovering = true;
+
+            PlayRandomHoverSound();
+        }
     }
 
     private void OnMouseExit()
     {
         if (!isTriggered)
+        {
             isHovering = false;
+        }
     }
 
     private void OnMouseDown()
     {
-        if (isTriggered) return;
+        if (isTriggered)
+            return;
 
         isTriggered = true;
+
+        PlayRandomPluckSound();
 
         // --- GAME LOGIC ---
         if (manager != null)
@@ -129,7 +161,9 @@ public class LeafPull : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("LeafGameManager not found in scene!");
+            Debug.LogWarning(
+                "LeafGameManager not found in scene!"
+            );
         }
 
         // --- PREP FALL ---
@@ -141,6 +175,38 @@ public class LeafPull : MonoBehaviour
         StartCoroutine(WiggleFallFade());
     }
 
+    void PlayRandomHoverSound()
+    {
+        if (audioSource == null)
+            return;
+
+        if (hoverClips == null || hoverClips.Length == 0)
+            return;
+
+        AudioClip clip =
+            hoverClips[
+                Random.Range(0, hoverClips.Length)
+            ];
+
+        audioSource.PlayOneShot(clip, hoverVolume);
+    }
+
+    void PlayRandomPluckSound()
+    {
+        if (audioSource == null)
+            return;
+
+        if (pluckClips == null || pluckClips.Length == 0)
+            return;
+
+        AudioClip clip =
+            pluckClips[
+                Random.Range(0, pluckClips.Length)
+            ];
+
+        audioSource.PlayOneShot(clip, pluckVolume);
+    }
+
     private IEnumerator WiggleFallFade()
     {
         float timer = 0f;
@@ -148,34 +214,71 @@ public class LeafPull : MonoBehaviour
         // --- WIGGLE ---
         while (timer < wiggleDuration)
         {
-            float normalized = timer / wiggleDuration;
-            float envelope = Mathf.Sin(normalized * Mathf.PI);
+            float normalized =
+                timer / wiggleDuration;
+
+            float envelope =
+                Mathf.Sin(normalized * Mathf.PI);
 
             float angleOffset =
                 Mathf.Sin(timer * wiggleSpeed) *
                 wiggleAngle *
                 envelope;
 
-            transform.rotation = Quaternion.Euler(0f, 0f, baseRotationZ + angleOffset);
+            transform.rotation =
+                Quaternion.Euler(
+                    0f,
+                    0f,
+                    baseRotationZ + angleOffset
+                );
 
             timer += Time.deltaTime;
+
             yield return null;
         }
 
         // --- FALL + FADE ---
         float fadeTimer = 0f;
+
         Color startColor = sr.color;
 
         while (fadeTimer < fadeDuration)
         {
-            transform.position += Vector3.down * fallSpeed * Time.deltaTime;
-            transform.position += Vector3.right * driftDirection * horizontalDrift * Time.deltaTime;
-            transform.Rotate(0f, 0f, spinDirection * rotationSpeed * Time.deltaTime);
+            transform.position +=
+                Vector3.down *
+                fallSpeed *
+                Time.deltaTime;
 
-            float alpha = Mathf.Lerp(1f, 0f, fadeTimer / fadeDuration);
-            sr.color = new Color(startColor.r, startColor.g, startColor.b, alpha);
+            transform.position +=
+                Vector3.right *
+                driftDirection *
+                horizontalDrift *
+                Time.deltaTime;
+
+            transform.Rotate(
+                0f,
+                0f,
+                spinDirection *
+                rotationSpeed *
+                Time.deltaTime
+            );
+
+            float alpha =
+                Mathf.Lerp(
+                    1f,
+                    0f,
+                    fadeTimer / fadeDuration
+                );
+
+            sr.color = new Color(
+                startColor.r,
+                startColor.g,
+                startColor.b,
+                alpha
+            );
 
             fadeTimer += Time.deltaTime;
+
             yield return null;
         }
 

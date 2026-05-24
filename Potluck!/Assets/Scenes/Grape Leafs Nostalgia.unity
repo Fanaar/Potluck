@@ -415,6 +415,18 @@ MonoBehaviour:
   horizontalDrift: 1
   rotationSpeed: 180
   fadeDuration: 1
+  audioSource: {fileID: 701471136}
+  hoverClips:
+  - {fileID: 8300000, guid: aa47446f0adf23b4ba56144242767bac, type: 3}
+  - {fileID: 8300000, guid: 2dce70a94e3154c47aafcc36bd752d83, type: 3}
+  - {fileID: 8300000, guid: 8cca6b0feb7ebf5458b9d96ef94ac152, type: 3}
+  - {fileID: 8300000, guid: 2da7ee3e418d2ff44b6fe19ed014a55c, type: 3}
+  pluckClips:
+  - {fileID: 8300000, guid: 7ce64dc94f7a8ef4f9c57c44aaac2e4e, type: 3}
+  - {fileID: 8300000, guid: 3c2e177411bf7ff4f9161c8c09ded344, type: 3}
+  - {fileID: 8300000, guid: 5b487d8df0f838842bd88d684ed2745a, type: 3}
+  hoverVolume: 0.5
+  pluckVolume: 1
 --- !u!1 &227528269
 GameObject:
   m_ObjectHideFlags: 0
@@ -574,6 +586,18 @@ MonoBehaviour:
   horizontalDrift: 1
   rotationSpeed: 180
   fadeDuration: 1
+  audioSource: {fileID: 701471136}
+  hoverClips:
+  - {fileID: 8300000, guid: aa47446f0adf23b4ba56144242767bac, type: 3}
+  - {fileID: 8300000, guid: 2dce70a94e3154c47aafcc36bd752d83, type: 3}
+  - {fileID: 8300000, guid: 8cca6b0feb7ebf5458b9d96ef94ac152, type: 3}
+  - {fileID: 8300000, guid: 2da7ee3e418d2ff44b6fe19ed014a55c, type: 3}
+  pluckClips:
+  - {fileID: 8300000, guid: 7ce64dc94f7a8ef4f9c57c44aaac2e4e, type: 3}
+  - {fileID: 8300000, guid: 3c2e177411bf7ff4f9161c8c09ded344, type: 3}
+  - {fileID: 8300000, guid: 5b487d8df0f838842bd88d684ed2745a, type: 3}
+  hoverVolume: 0.5
+  pluckVolume: 1
 --- !u!1 &229199230
 GameObject:
   m_ObjectHideFlags: 0
@@ -907,6 +931,18 @@ MonoBehaviour:
   horizontalDrift: 1
   rotationSpeed: 180
   fadeDuration: 1
+  audioSource: {fileID: 701471136}
+  hoverClips:
+  - {fileID: 8300000, guid: aa47446f0adf23b4ba56144242767bac, type: 3}
+  - {fileID: 8300000, guid: 2dce70a94e3154c47aafcc36bd752d83, type: 3}
+  - {fileID: 8300000, guid: 8cca6b0feb7ebf5458b9d96ef94ac152, type: 3}
+  - {fileID: 8300000, guid: 2da7ee3e418d2ff44b6fe19ed014a55c, type: 3}
+  pluckClips:
+  - {fileID: 8300000, guid: 7ce64dc94f7a8ef4f9c57c44aaac2e4e, type: 3}
+  - {fileID: 8300000, guid: 3c2e177411bf7ff4f9161c8c09ded344, type: 3}
+  - {fileID: 8300000, guid: 5b487d8df0f838842bd88d684ed2745a, type: 3}
+  hoverVolume: 0.5
+  pluckVolume: 1
 --- !u!1 &569310867
 GameObject:
   m_ObjectHideFlags: 0
@@ -996,6 +1032,18 @@ MonoBehaviour:
   horizontalDrift: 1
   rotationSpeed: 180
   fadeDuration: 1
+  audioSource: {fileID: 701471136}
+  hoverClips:
+  - {fileID: 8300000, guid: aa47446f0adf23b4ba56144242767bac, type: 3}
+  - {fileID: 8300000, guid: 2dce70a94e3154c47aafcc36bd752d83, type: 3}
+  - {fileID: 8300000, guid: 8cca6b0feb7ebf5458b9d96ef94ac152, type: 3}
+  - {fileID: 8300000, guid: 2da7ee3e418d2ff44b6fe19ed014a55c, type: 3}
+  pluckClips:
+  - {fileID: 8300000, guid: 7ce64dc94f7a8ef4f9c57c44aaac2e4e, type: 3}
+  - {fileID: 8300000, guid: 3c2e177411bf7ff4f9161c8c09ded344, type: 3}
+  - {fileID: 8300000, guid: 5b487d8df0f838842bd88d684ed2745a, type: 3}
+  hoverVolume: 0.5
+  pluckVolume: 1
 --- !u!212 &569310870
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1188,6 +1236,135 @@ Transform:
   - {fileID: 512670151}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &701471135
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 701471137}
+  - component: {fileID: 701471136}
+  m_Layer: 0
+  m_Name: Audio Source
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &701471136
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 701471135}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &701471137
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 701471135}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1618.4143, y: 681.9064, z: -4.9646015}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1088033509
 GameObject:
   m_ObjectHideFlags: 0
@@ -1347,6 +1524,18 @@ MonoBehaviour:
   horizontalDrift: 1
   rotationSpeed: 180
   fadeDuration: 1
+  audioSource: {fileID: 701471136}
+  hoverClips:
+  - {fileID: 8300000, guid: aa47446f0adf23b4ba56144242767bac, type: 3}
+  - {fileID: 8300000, guid: 2dce70a94e3154c47aafcc36bd752d83, type: 3}
+  - {fileID: 8300000, guid: 8cca6b0feb7ebf5458b9d96ef94ac152, type: 3}
+  - {fileID: 8300000, guid: 2da7ee3e418d2ff44b6fe19ed014a55c, type: 3}
+  pluckClips:
+  - {fileID: 8300000, guid: 7ce64dc94f7a8ef4f9c57c44aaac2e4e, type: 3}
+  - {fileID: 8300000, guid: 3c2e177411bf7ff4f9161c8c09ded344, type: 3}
+  - {fileID: 8300000, guid: 5b487d8df0f838842bd88d684ed2745a, type: 3}
+  hoverVolume: 0.5
+  pluckVolume: 1
 --- !u!1 &1095527755
 GameObject:
   m_ObjectHideFlags: 0
@@ -1523,6 +1712,18 @@ MonoBehaviour:
   horizontalDrift: 1
   rotationSpeed: 180
   fadeDuration: 1
+  audioSource: {fileID: 701471136}
+  hoverClips:
+  - {fileID: 8300000, guid: aa47446f0adf23b4ba56144242767bac, type: 3}
+  - {fileID: 8300000, guid: 2dce70a94e3154c47aafcc36bd752d83, type: 3}
+  - {fileID: 8300000, guid: 8cca6b0feb7ebf5458b9d96ef94ac152, type: 3}
+  - {fileID: 8300000, guid: 2da7ee3e418d2ff44b6fe19ed014a55c, type: 3}
+  pluckClips:
+  - {fileID: 8300000, guid: 7ce64dc94f7a8ef4f9c57c44aaac2e4e, type: 3}
+  - {fileID: 8300000, guid: 3c2e177411bf7ff4f9161c8c09ded344, type: 3}
+  - {fileID: 8300000, guid: 5b487d8df0f838842bd88d684ed2745a, type: 3}
+  hoverVolume: 0.5
+  pluckVolume: 1
 --- !u!212 &1119739097
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2039,6 +2240,18 @@ MonoBehaviour:
   horizontalDrift: 1
   rotationSpeed: 180
   fadeDuration: 1
+  audioSource: {fileID: 701471136}
+  hoverClips:
+  - {fileID: 8300000, guid: aa47446f0adf23b4ba56144242767bac, type: 3}
+  - {fileID: 8300000, guid: 2dce70a94e3154c47aafcc36bd752d83, type: 3}
+  - {fileID: 8300000, guid: 8cca6b0feb7ebf5458b9d96ef94ac152, type: 3}
+  - {fileID: 8300000, guid: 2da7ee3e418d2ff44b6fe19ed014a55c, type: 3}
+  pluckClips:
+  - {fileID: 8300000, guid: 7ce64dc94f7a8ef4f9c57c44aaac2e4e, type: 3}
+  - {fileID: 8300000, guid: 3c2e177411bf7ff4f9161c8c09ded344, type: 3}
+  - {fileID: 8300000, guid: 5b487d8df0f838842bd88d684ed2745a, type: 3}
+  hoverVolume: 0.5
+  pluckVolume: 1
 --- !u!1 &1364949464
 GameObject:
   m_ObjectHideFlags: 0
@@ -2198,6 +2411,18 @@ MonoBehaviour:
   horizontalDrift: 1
   rotationSpeed: 180
   fadeDuration: 1
+  audioSource: {fileID: 701471136}
+  hoverClips:
+  - {fileID: 8300000, guid: aa47446f0adf23b4ba56144242767bac, type: 3}
+  - {fileID: 8300000, guid: 2dce70a94e3154c47aafcc36bd752d83, type: 3}
+  - {fileID: 8300000, guid: 8cca6b0feb7ebf5458b9d96ef94ac152, type: 3}
+  - {fileID: 8300000, guid: 2da7ee3e418d2ff44b6fe19ed014a55c, type: 3}
+  pluckClips:
+  - {fileID: 8300000, guid: 7ce64dc94f7a8ef4f9c57c44aaac2e4e, type: 3}
+  - {fileID: 8300000, guid: 3c2e177411bf7ff4f9161c8c09ded344, type: 3}
+  - {fileID: 8300000, guid: 5b487d8df0f838842bd88d684ed2745a, type: 3}
+  hoverVolume: 0.5
+  pluckVolume: 1
 --- !u!1 &1382068549
 GameObject:
   m_ObjectHideFlags: 0
@@ -2287,6 +2512,18 @@ MonoBehaviour:
   horizontalDrift: 1
   rotationSpeed: 180
   fadeDuration: 1
+  audioSource: {fileID: 701471136}
+  hoverClips:
+  - {fileID: 8300000, guid: aa47446f0adf23b4ba56144242767bac, type: 3}
+  - {fileID: 8300000, guid: 2dce70a94e3154c47aafcc36bd752d83, type: 3}
+  - {fileID: 8300000, guid: 8cca6b0feb7ebf5458b9d96ef94ac152, type: 3}
+  - {fileID: 8300000, guid: 2da7ee3e418d2ff44b6fe19ed014a55c, type: 3}
+  pluckClips:
+  - {fileID: 8300000, guid: 7ce64dc94f7a8ef4f9c57c44aaac2e4e, type: 3}
+  - {fileID: 8300000, guid: 3c2e177411bf7ff4f9161c8c09ded344, type: 3}
+  - {fileID: 8300000, guid: 5b487d8df0f838842bd88d684ed2745a, type: 3}
+  hoverVolume: 0.5
+  pluckVolume: 1
 --- !u!212 &1382068552
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2563,6 +2800,18 @@ MonoBehaviour:
   horizontalDrift: 1
   rotationSpeed: 180
   fadeDuration: 1
+  audioSource: {fileID: 701471136}
+  hoverClips:
+  - {fileID: 8300000, guid: aa47446f0adf23b4ba56144242767bac, type: 3}
+  - {fileID: 8300000, guid: 2dce70a94e3154c47aafcc36bd752d83, type: 3}
+  - {fileID: 8300000, guid: 8cca6b0feb7ebf5458b9d96ef94ac152, type: 3}
+  - {fileID: 8300000, guid: 2da7ee3e418d2ff44b6fe19ed014a55c, type: 3}
+  pluckClips:
+  - {fileID: 8300000, guid: 7ce64dc94f7a8ef4f9c57c44aaac2e4e, type: 3}
+  - {fileID: 8300000, guid: 3c2e177411bf7ff4f9161c8c09ded344, type: 3}
+  - {fileID: 8300000, guid: 5b487d8df0f838842bd88d684ed2745a, type: 3}
+  hoverVolume: 0.5
+  pluckVolume: 1
 --- !u!212 &1618488481
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2722,6 +2971,18 @@ MonoBehaviour:
   horizontalDrift: 1
   rotationSpeed: 180
   fadeDuration: 1
+  audioSource: {fileID: 701471136}
+  hoverClips:
+  - {fileID: 8300000, guid: aa47446f0adf23b4ba56144242767bac, type: 3}
+  - {fileID: 8300000, guid: 2dce70a94e3154c47aafcc36bd752d83, type: 3}
+  - {fileID: 8300000, guid: 8cca6b0feb7ebf5458b9d96ef94ac152, type: 3}
+  - {fileID: 8300000, guid: 2da7ee3e418d2ff44b6fe19ed014a55c, type: 3}
+  pluckClips:
+  - {fileID: 8300000, guid: 7ce64dc94f7a8ef4f9c57c44aaac2e4e, type: 3}
+  - {fileID: 8300000, guid: 3c2e177411bf7ff4f9161c8c09ded344, type: 3}
+  - {fileID: 8300000, guid: 5b487d8df0f838842bd88d684ed2745a, type: 3}
+  hoverVolume: 0.5
+  pluckVolume: 1
 --- !u!212 &1755596797
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2928,6 +3189,18 @@ MonoBehaviour:
   horizontalDrift: 1
   rotationSpeed: 180
   fadeDuration: 1
+  audioSource: {fileID: 701471136}
+  hoverClips:
+  - {fileID: 8300000, guid: aa47446f0adf23b4ba56144242767bac, type: 3}
+  - {fileID: 8300000, guid: 2dce70a94e3154c47aafcc36bd752d83, type: 3}
+  - {fileID: 8300000, guid: 8cca6b0feb7ebf5458b9d96ef94ac152, type: 3}
+  - {fileID: 8300000, guid: 2da7ee3e418d2ff44b6fe19ed014a55c, type: 3}
+  pluckClips:
+  - {fileID: 8300000, guid: 7ce64dc94f7a8ef4f9c57c44aaac2e4e, type: 3}
+  - {fileID: 8300000, guid: 3c2e177411bf7ff4f9161c8c09ded344, type: 3}
+  - {fileID: 8300000, guid: 5b487d8df0f838842bd88d684ed2745a, type: 3}
+  hoverVolume: 0.5
+  pluckVolume: 1
 --- !u!212 &2107042132
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2997,3 +3270,4 @@ SceneRoots:
   - {fileID: 1839759381}
   - {fileID: 1128241547}
   - {fileID: 656414106}
+  - {fileID: 701471137}
