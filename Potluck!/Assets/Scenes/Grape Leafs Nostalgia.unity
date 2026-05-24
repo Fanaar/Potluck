@@ -785,7 +785,7 @@ GameObject:
   - component: {fileID: 512670153}
   - component: {fileID: 512670152}
   m_Layer: 0
-  m_Name: Bad Grape Leaf 4
+  m_Name: Bad Grape Leaf 2
   m_TagString: badleaf
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -956,7 +956,7 @@ GameObject:
   - component: {fileID: 569310869}
   - component: {fileID: 569310868}
   m_Layer: 0
-  m_Name: Bad Grape Leaf 1
+  m_Name: Bad Grape Leaf 4
   m_TagString: badleaf
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1230,10 +1230,10 @@ Transform:
   - {fileID: 2107042129}
   - {fileID: 1755596794}
   - {fileID: 1618488478}
-  - {fileID: 569310871}
-  - {fileID: 1254438561}
   - {fileID: 1382068553}
   - {fileID: 512670151}
+  - {fileID: 1254438561}
+  - {fileID: 569310871}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &701471135
@@ -1365,6 +1365,94 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &853856330
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 853856331}
+  - component: {fileID: 853856333}
+  - component: {fileID: 853856332}
+  - component: {fileID: 853856334}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &853856331
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 853856330}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 5.743447, y: 5.743447, z: 5.743447}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1128241547}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -82}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &853856332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 853856330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &853856333
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 853856330}
+  m_CullTransparentMesh: 1
+--- !u!225 &853856334
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 853856330}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1088033509
 GameObject:
   m_ObjectHideFlags: 0
@@ -1889,6 +1977,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1226716524}
+  - {fileID: 853856331}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2011,8 +2100,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 16777215
-  m_fontColor: {r: 1, g: 1, b: 1, a: 0}
+    rgba: 0
+  m_fontColor: {r: 0, g: 0, b: 0, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2029,8 +2118,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 55
+  m_fontSizeBase: 55
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2094,7 +2183,7 @@ GameObject:
   - component: {fileID: 1254438563}
   - component: {fileID: 1254438562}
   m_Layer: 0
-  m_Name: Bad Grape Leaf 2
+  m_Name: Bad Grape Leaf 3
   m_TagString: badleaf
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2436,7 +2525,7 @@ GameObject:
   - component: {fileID: 1382068551}
   - component: {fileID: 1382068550}
   m_Layer: 0
-  m_Name: Bad Grape Leaf 3
+  m_Name: Bad Grape Leaf 1
   m_TagString: badleaf
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3069,7 +3158,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextSceneName: Walking in street 2
   feedbackText: {fileID: 1226716525}
-  messageDuration: 2
+  messageDuration: 3
+  textFadeDuration: 0.25
+  badLeafMessages:
+  - The edges are damaged. It might tear while folding.
+  - Notice these holes? Bugs have already eaten through this leaf.
+  - See the yellowing? This leaf may be too tough for rolling.
+  - This one feels a little too dry and fragile.
+  badLeafPreviewImage: {fileID: 853856332}
+  badLeafPreviewCanvasGroup: {fileID: 853856334}
+  previewFadeDuration: 1
+  previewVisibleDuration: 2
+  previewStartOffset: {x: 0, y: -100}
+  previewSlideCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!4 &1839759381
 Transform:
   m_ObjectHideFlags: 0

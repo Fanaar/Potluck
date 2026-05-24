@@ -156,7 +156,7 @@ public class LeafPull : MonoBehaviour
             }
             else if (CompareTag("badleaf"))
             {
-                manager.BadLeafPlucked();
+                manager.BadLeafPlucked(sr.sprite);
             }
         }
         else
