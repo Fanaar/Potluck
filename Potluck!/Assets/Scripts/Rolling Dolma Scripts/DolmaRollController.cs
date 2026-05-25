@@ -52,11 +52,26 @@ public class DolmaRollController : MonoBehaviour
         HandleHover(dir);
     }
 
+    void OnMouseEnter()
+    {
+        if (state < 4)
+        {
+            CustomCursorUI.Instance.SetHover();
+        }
+    }
+
+    void OnMouseExit()
+    {
+        CustomCursorUI.Instance.SetDefault();
+    }
+
     void OnMouseDown()
     {
         if (state >= 4 || isTransitioning) return;
 
         dragStart = Input.mousePosition;
+
+        CustomCursorUI.Instance.SetGrab();
     }
 
     void OnMouseUp()
@@ -67,6 +82,8 @@ public class DolmaRollController : MonoBehaviour
         Vector2 dir = dragEnd - dragStart;
 
         ProcessDrag(dir);
+
+        CustomCursorUI.Instance.SetHover();
     }
 
     void ProcessDrag(Vector2 dir)
