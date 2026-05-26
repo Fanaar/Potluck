@@ -119,12 +119,28 @@ public class PanLidDrag : MonoBehaviour
         }
     }
 
+    void OnMouseEnter()
+    {
+        if (isFading) return;
+
+        CustomCursorUI.Instance.SetHover();
+    }
+
+    void OnMouseExit()
+    {
+        if (isDragging) return;
+
+        CustomCursorUI.Instance.SetDefault();
+    }
+
     void OnMouseDown()
     {
         if (isFading) return;
 
         isDragging = true;
         isReturning = false;
+
+        CustomCursorUI.Instance.SetGrab();
 
         Vector3 mouseWorld =
             cam.ScreenToWorldPoint(Input.mousePosition);
@@ -152,10 +168,13 @@ public class PanLidDrag : MonoBehaviour
         // FAR ENOUGH -> FADE OUT
         if (distance >= removeDistance)
         {
+            CustomCursorUI.Instance.SetDefault();
             StartCoroutine(FadeOut());
         }
         else
         {
+            CustomCursorUI.Instance.SetHover();
+
             // NOT FAR ENOUGH -> SNAP BACK
             isReturning = true;
         }

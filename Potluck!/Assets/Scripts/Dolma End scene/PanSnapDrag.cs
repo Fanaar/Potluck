@@ -72,11 +72,27 @@ public class PanSnapDrag : MonoBehaviour
         );
     }
 
+    void OnMouseEnter()
+    {
+        if (isMoving || isSnapped) return;
+
+        CustomCursorUI.Instance.SetHover();
+    }
+
+    void OnMouseExit()
+    {
+        if (isDragging) return;
+
+        CustomCursorUI.Instance.SetDefault();
+    }
+
     void OnMouseDown()
     {
         if (isMoving || isSnapped) return;
 
         isDragging = true;
+
+        CustomCursorUI.Instance.SetGrab();
 
         Vector3 mouseWorld =
             cam.ScreenToWorldPoint(Input.mousePosition);
@@ -91,6 +107,8 @@ public class PanSnapDrag : MonoBehaviour
         if (isMoving || isSnapped) return;
 
         isDragging = false;
+
+        CustomCursorUI.Instance.SetHover();
 
         TrySnap();
     }

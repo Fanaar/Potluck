@@ -81,15 +81,38 @@ public class StoveKnob : MonoBehaviour
         }
     }
 
+    void OnMouseEnter()
+    {
+        if (isOff) return;
+
+        CustomCursorUI.Instance.SetHover();
+    }
+
+    void OnMouseExit()
+    {
+        CustomCursorUI.Instance.SetDefault();
+    }
+
     void OnMouseDown()
     {
         if (isOff) return;
 
         isDragging = true;
+
+        CustomCursorUI.Instance.SetGrab();
     }
 
     void OnMouseUp()
     {
         isDragging = false;
+
+        if (!isOff)
+        {
+            CustomCursorUI.Instance.SetHover();
+        }
+        else
+        {
+            CustomCursorUI.Instance.SetDefault();
+        }
     }
 }
