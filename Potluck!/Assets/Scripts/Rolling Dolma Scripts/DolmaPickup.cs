@@ -9,16 +9,40 @@ public class DolmaPickup : MonoBehaviour
     [Header("Scene References")]
     public CameraPanController cameraPan;
 
+    void OnMouseEnter()
+    {
+        if (placed) return;
+
+        CustomCursorUI.Instance.SetHover();
+    }
+
+    void OnMouseExit()
+    {
+        if (placed) return;
+
+        if (!dragging)
+        {
+            CustomCursorUI.Instance.SetDefault();
+        }
+    }
+
     void OnMouseDown()
     {
         if (placed) return;
 
         dragging = true;
+
+        CustomCursorUI.Instance.SetGrab();
     }
 
     void OnMouseUp()
     {
         dragging = false;
+
+        if (!placed)
+        {
+            CustomCursorUI.Instance.SetHover();
+        }
     }
 
     void Update()
@@ -51,6 +75,8 @@ public class DolmaPickup : MonoBehaviour
         placed = true;
         dragging = false;
 
+        CustomCursorUI.Instance.SetDefault();
+
         StartCoroutine(SnapToPlate(snapPoint.position));
         StartCoroutine(HandleMotherSequence());
     }
@@ -67,6 +93,7 @@ public class DolmaPickup : MonoBehaviour
             yield return null;
         }
     }
+
     IEnumerator HandleMotherSequence()
     {
         if (cameraPan != null)
