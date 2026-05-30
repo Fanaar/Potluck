@@ -50,30 +50,48 @@ public class RollingPinController : MonoBehaviour
 
     private void HandlePickup()
     {
+        Vector2 mouseWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Collider2D hit = Physics2D.OverlapPoint(mouseWorld);
+
+        // Hover cursor
+        if (!isPickedUp)
+        {
+            if (hit != null && hit.gameObject == gameObject)
+            {
+                CustomCursorUI.Instance.SetHover();
+            }
+            else
+            {
+                CustomCursorUI.Instance.SetDefault();
+            }
+        }
+
+        // Oppakken
         if (Input.GetMouseButtonDown(0))
         {
-            Vector2 mouseWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Collider2D hit = Physics2D.OverlapPoint(mouseWorld);
-
             if (hit != null && hit.gameObject == gameObject)
             {
                 isPickedUp = true;
 
-                // 👇 Hover UIT
+                // Hover UIT
                 if (hoverHighlight != null)
                     hoverHighlight.DisableHover();
 
-                Cursor.visible = false;
+                // Grab cursor
+                CustomCursorUI.Instance.SetGrab();
+
                 Cursor.lockState = CursorLockMode.Confined;
             }
         }
 
-        // Rechtermuisknop = loslaten (optioneel)
+        // Loslaten met rechtermuisknop
         if (Input.GetMouseButtonDown(1))
         {
             isPickedUp = false;
 
-            Cursor.visible = true;
+            // Cursor terug naar default
+            CustomCursorUI.Instance.SetDefault();
+
             Cursor.lockState = CursorLockMode.None;
         }
     }
@@ -138,10 +156,6 @@ public class RollingPinController : MonoBehaviour
     public void StartFadeOut()
     {
         isFading = true;
-
-        // cursor terughalen
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
     }
 
     public Vector2 GetMovementDelta()
