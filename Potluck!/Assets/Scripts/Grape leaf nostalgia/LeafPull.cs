@@ -126,6 +126,8 @@ public class LeafPull : MonoBehaviour
         {
             isHovering = true;
 
+            CustomCursorUI.Instance.SetHover();
+
             PlayRandomHoverSound();
         }
     }
@@ -135,6 +137,8 @@ public class LeafPull : MonoBehaviour
         if (!isTriggered)
         {
             isHovering = false;
+
+            CustomCursorUI.Instance.SetDefault();
         }
     }
 
@@ -144,6 +148,10 @@ public class LeafPull : MonoBehaviour
             return;
 
         isTriggered = true;
+
+        CustomCursorUI.Instance.SetGrab();
+
+        Invoke(nameof(ResetCursor), 0.1f);
 
         PlayRandomPluckSound();
 
@@ -281,7 +289,13 @@ public class LeafPull : MonoBehaviour
 
             yield return null;
         }
+        CustomCursorUI.Instance.SetDefault();
 
         Destroy(gameObject);
+    }
+
+    private void ResetCursor()
+    {
+        CustomCursorUI.Instance.SetDefault();
     }
 }

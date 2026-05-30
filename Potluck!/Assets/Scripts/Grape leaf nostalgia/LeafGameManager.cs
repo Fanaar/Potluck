@@ -24,6 +24,11 @@ public class LeafGameManager : MonoBehaviour
     [Header("Bad Leaf Preview")]
     [SerializeField] private Image badLeafPreviewImage;
 
+    [Header("Scene Fade")]
+    [SerializeField] private CanvasGroup sceneFadeCanvasGroup;
+
+    [SerializeField] private float sceneFadeDuration = 1f;
+
     [SerializeField] private CanvasGroup badLeafPreviewCanvasGroup;
 
     [SerializeField] private float previewFadeDuration = 0.25f;
@@ -274,6 +279,35 @@ public class LeafGameManager : MonoBehaviour
 
     private void LoadNextScene()
     {
+        StartCoroutine(FadeAndLoadScene());
+    }
+
+    private IEnumerator FadeAndLoadScene()
+    {
+        if (sceneFadeCanvasGroup != null)
+        {
+            float t = 0f;
+
+            // start transparent
+            sceneFadeCanvasGroup.alpha = 0f;
+
+            while (t < sceneFadeDuration)
+            {
+                t += Time.deltaTime;
+
+                sceneFadeCanvasGroup.alpha =
+                    Mathf.Lerp(
+                        0f,
+                        1f,
+                        t / sceneFadeDuration
+                    );
+
+                yield return null;
+            }
+
+            sceneFadeCanvasGroup.alpha = 1f;
+        }
+
         SceneManager.LoadScene(nextSceneName);
     }
 }
