@@ -240,12 +240,21 @@ public class MotherSequencePlayer : MonoBehaviour
                 StartCoroutine(RevealText());
         }
 
-        UpdateButtons();
     }
 
     IEnumerator RevealText()
     {
         isRevealing = true;
+
+        // buttons tijdelijk verbergen
+        if (nextButton != null)
+            nextButton.gameObject.SetActive(false);
+
+        if (prevButton != null)
+            prevButton.gameObject.SetActive(false);
+
+        if (continueButton != null)
+            continueButton.gameObject.SetActive(false);
 
         int totalVisibleCharacters =
             dialogueText.textInfo.characterCount;
@@ -260,6 +269,9 @@ public class MotherSequencePlayer : MonoBehaviour
         isRevealing = false;
 
         canClick = true;
+
+        // NU PAS buttons tonen
+        UpdateButtons();
     }
 
     void UpdateButtons()

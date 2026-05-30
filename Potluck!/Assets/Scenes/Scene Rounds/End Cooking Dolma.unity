@@ -10852,7 +10852,7 @@ MonoBehaviour:
   defaultCursor: {fileID: 21300000, guid: 93a1bc61468ea71499cea6d5cfb92c98, type: 3}
   hoverCursor: {fileID: 21300000, guid: 8fb4dbb8c0a66104ab408cba400ef9b4, type: 3}
   grabCursor: {fileID: 21300000, guid: 02ea80d1954a85942af53056a5bd29bc, type: 3}
-  cursorOffset: {x: 0, y: 0}
+  cursorOffset: {x: 16, y: -16}
 --- !u!114 &852596634
 MonoBehaviour:
   m_ObjectHideFlags: 0
