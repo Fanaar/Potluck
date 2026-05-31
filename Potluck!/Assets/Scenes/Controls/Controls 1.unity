@@ -800,7 +800,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeImage: {fileID: 286055895}
-  sceneToLoad: Walking in street 1
+  sceneToLoad: Invitation Fanaar
   fadeDuration: 2
 --- !u!4 &1470242355
 Transform:

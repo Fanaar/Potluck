@@ -14,12 +14,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Controls/Controls 1.unity
     guid: 49f6d9dc22ff83e4db4933c17eb58740
-  - enabled: 0
-    path: Assets/Scenes/Controls/Controls 2.unity
-    guid: c7095fa2af2eccf4e94b00cdb3ac514f
-  - enabled: 0
-    path: Assets/Scenes/Controls/Controls 3.unity
-    guid: 30b4efb6e6f33f74a90ddf258c4e48f4
+  - enabled: 1
+    path: Assets/Scenes/Invitation Fanaar.unity
+    guid: 39757c736c738864cb1f456cb7a39072
   - enabled: 1
     path: Assets/Scenes/Walking in street 1.unity
     guid: fc359ce99fd5d8a478b39c79a3115411
