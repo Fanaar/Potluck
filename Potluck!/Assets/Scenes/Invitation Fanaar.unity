@@ -380,15 +380,20 @@ MonoBehaviour:
   - {fileID: 342194249}
   - {fileID: 1758486746}
   - {fileID: 1427237072}
+  - {fileID: 1962245431}
   objectsToMoveDown:
   - {fileID: 244742904}
   - {fileID: 1568873028}
   - {fileID: 1268420882}
   - {fileID: 2003142446}
-  moveDownAmount: 20
-  moveSpeed: 1
+  animatorsToStart:
+  - {fileID: 1920514633}
+  - {fileID: 342194250}
+  - {fileID: 1427237075}
+  moveDownAmount: 40
+  moveSpeed: 0.7
   minObjectSpeed: 0.2
-  maxObjectSpeed: 1
+  maxObjectSpeed: 0.5
   fadeSpeed: 4
 --- !u!1 &244742902
 GameObject:
@@ -503,7 +508,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 342194249}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: d66497468b682024a9e85f5fbfd3a49e, type: 2}
   m_CullingMode: 0
@@ -1441,7 +1446,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: bc5bd1e5ae88876449e6a915d1da4e9f, type: 3}
   m_Color: {r: 0.5018867, g: 0.5018867, b: 0.5018867, a: 0}
   m_FlipX: 0
@@ -1564,7 +1569,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1427237072}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: e454c79053a1c0846a3a56b851209d0c, type: 2}
   m_CullingMode: 0
@@ -1793,7 +1798,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: bc5bd1e5ae88876449e6a915d1da4e9f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2405,7 +2410,7 @@ Transform:
   m_GameObject: {fileID: 1920514630}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.08, y: -0.05, z: 0}
+  m_LocalPosition: {x: -0.11, y: -0.05, z: 0}
   m_LocalScale: {x: 0.9505, y: 0.9505, z: 0.9505}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2419,7 +2424,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1920514630}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 16867094205263e4e83e8ad249a127d1, type: 2}
   m_CullingMode: 0
@@ -2433,6 +2438,61 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &1962245431
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1962245433}
+  - component: {fileID: 1962245432}
+  m_Layer: 0
+  m_Name: Delayed fade
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1962245432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1962245431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e8cf8e25e7895d4da33378b9bd1b248, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 6.5
+  fadeDuration: 1.5
+  objectsToActivate:
+  - {fileID: 1841191192}
+  - {fileID: 1386893939}
+  objectsToDeactivate:
+  - {fileID: 1920514630}
+  - {fileID: 1372482555}
+  - {fileID: 342194249}
+  - {fileID: 1758486746}
+  - {fileID: 1427237072}
+--- !u!4 &1962245433
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1962245431}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 960, y: 540, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2003142443
 GameObject:
   m_ObjectHideFlags: 0
@@ -2854,6 +2914,7 @@ SceneRoots:
   - {fileID: 342194252}
   - {fileID: 1758486748}
   - {fileID: 1427237074}
+  - {fileID: 1962245433}
   - {fileID: 2067619825}
   - {fileID: 966900300}
   - {fileID: 1386893941}
