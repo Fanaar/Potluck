@@ -10,6 +10,7 @@ TagManager:
   - goodleaf
   - badleaf
   - idle
+  - Correct
   layers:
   - Default
   - TransparentFX

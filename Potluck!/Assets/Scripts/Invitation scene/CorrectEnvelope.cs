@@ -38,6 +38,9 @@ public class CorrectEnvelope : MonoBehaviour
 
     void OnMouseDown()
     {
+        if (!CompareTag("Correct"))
+            return;
+
         if (clicked)
             return;
 
