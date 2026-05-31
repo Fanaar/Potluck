@@ -45,8 +45,32 @@ public class MotherSequencePlayer : MonoBehaviour
     {
         RebindReferences();
 
+        ResetUI();
+
+        IsReady = true;
+    }
+
+
+    void ResetUI()
+    {
+        currentIndex = 0;
+
+        isPlaying = false;
+        canClick = false;
+        isRevealing = false;
+
+        if (revealCoroutine != null)
+        {
+            StopCoroutine(revealCoroutine);
+            revealCoroutine = null;
+        }
+
         if (dialogueText != null)
+        {
             dialogueText.gameObject.SetActive(false);
+            dialogueText.text = "";
+            dialogueText.maxVisibleCharacters = 0;
+        }
 
         if (nextButton != null)
             nextButton.gameObject.SetActive(false);
@@ -56,8 +80,6 @@ public class MotherSequencePlayer : MonoBehaviour
 
         if (continueButton != null)
             continueButton.gameObject.SetActive(false);
-
-        IsReady = true;
     }
 
     void RebindReferences()
@@ -94,6 +116,8 @@ public class MotherSequencePlayer : MonoBehaviour
 
     public void PlaySequence(MotherLine[] lines)
     {
+        ResetUI();
+
         RebindReferences();
 
         if (lines == null || lines.Length == 0)
@@ -239,7 +263,6 @@ public class MotherSequencePlayer : MonoBehaviour
             revealCoroutine =
                 StartCoroutine(RevealText());
         }
-
     }
 
     IEnumerator RevealText()
