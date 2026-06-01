@@ -399,7 +399,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 121950, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1054732729}
+    - targetCorrespondingSourceObject: {fileID: 121608, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1295689433}
   m_SourcePrefab: {fileID: 100100000, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
 --- !u!1 &383131399
 GameObject:
@@ -467,8 +473,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4279835709
-  m_fontColor: {r: 0.23773581, g: 0.11139475, b: 0.09823423, a: 1}
+    rgba: 1645629
+  m_fontColor: {r: 0.23773581, g: 0.11139475, b: 0.09823423, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -649,8 +655,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4279835709
-  m_fontColor: {r: 0.23773581, g: 0.11139475, b: 0.09823423, a: 1}
+    rgba: 1645629
+  m_fontColor: {r: 0.23773581, g: 0.11139475, b: 0.09823423, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -873,8 +879,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4279835709
-  m_fontColor: {r: 0.23773581, g: 0.11139475, b: 0.09823423, a: 1}
+    rgba: 1645629
+  m_fontColor: {r: 0.23773581, g: 0.11139475, b: 0.09823423, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1087,6 +1093,23 @@ LightingSettings:
   m_PVRFilteringAtrousPositionSigmaIndirect: 2
   m_PVRFilteringAtrousPositionSigmaAO: 1
   m_RespectSceneVisibilityWhenBakingGI: 0
+--- !u!1 &1054732724 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 121950, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
+  m_PrefabInstance: {fileID: 379377900}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1054732729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1054732724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fda9a335ac0d0294f96617e5288f3618, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1063025518
 GameObject:
   m_ObjectHideFlags: 0
@@ -1153,8 +1176,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4279835709
-  m_fontColor: {r: 0.23773581, g: 0.11139475, b: 0.09823423, a: 1}
+    rgba: 1645629
+  m_fontColor: {r: 0.23773581, g: 0.11139475, b: 0.09823423, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1270,8 +1293,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4279835709
-  m_fontColor: {r: 0.23773581, g: 0.11139475, b: 0.09823423, a: 1}
+    rgba: 1645629
+  m_fontColor: {r: 0.23773581, g: 0.11139475, b: 0.09823423, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1453,6 +1476,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1295689428 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 121608, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
+  m_PrefabInstance: {fileID: 379377900}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1295689433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1295689428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fda9a335ac0d0294f96617e5288f3618, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &1346331177 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 22443772, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
@@ -1505,8 +1545,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4279835709
-  m_fontColor: {r: 0.23773581, g: 0.11139475, b: 0.09823423, a: 1}
+    rgba: 1645629
+  m_fontColor: {r: 0.23773581, g: 0.11139475, b: 0.09823423, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

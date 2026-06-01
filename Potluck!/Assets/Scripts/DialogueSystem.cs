@@ -26,6 +26,9 @@ public class DialogueSystem : MonoBehaviour
     [Header("Scene Settings")]
     public string nextSceneName;
 
+    [Header("Button Position")]
+    public float buttonXOffset = 0f;
+
     private int currentIndex = 0;
     private Coroutine revealCoroutine;
     private bool isRevealing = false;
@@ -174,35 +177,73 @@ public class DialogueSystem : MonoBehaviour
     {
         dialogueText.ForceMeshUpdate();
 
-        float renderedHeight =
-            dialogueText.textBounds.size.y;
+        TMP_TextInfo textInfo =
+            dialogueText.textInfo;
 
-        float buttonOffset = 80f;
+        if (textInfo.characterCount == 0)
+            return;
 
-        float buttonY =
-            dialogueText.rectTransform.localPosition.y
-            - renderedHeight
-            - buttonOffset;
+        // eerste zichtbare character
+        TMP_CharacterInfo firstChar =
+            textInfo.characterInfo[0];
 
-        nextButton.transform.localPosition =
-            new Vector3(
-                nextButton.transform.localPosition.x,
-                buttonY,
-                nextButton.transform.localPosition.z
+        // laatste zichtbare character
+        TMP_CharacterInfo lastChar =
+            textInfo.characterInfo[textInfo.characterCount - 1];
+
+        // wereld posities
+        Vector3 firstPos =
+            dialogueText.transform.TransformPoint(
+                firstChar.bottomLeft
             );
 
+        Vector3 lastPos =
+            dialogueText.transform.TransformPoint(
+                lastChar.bottomLeft
+            );
+
+        // omzetten naar local canvas positie
+        Vector3 firstLocal =
+            dialogueText.rectTransform.parent
+                .InverseTransformPoint(firstPos);
+
+        Vector3 lastLocal =
+            dialogueText.rectTransform.parent
+                .InverseTransformPoint(lastPos);
+
+        // iets onder de laatste regel
+        float buttonY =
+            lastLocal.y - 60f;
+
+        // begin onder eerste letter
+        float startX =
+            firstLocal.x + buttonXOffset;
+
+        // Previous
         prevButton.transform.localPosition =
             new Vector3(
-                prevButton.transform.localPosition.x,
+                startX,
                 buttonY,
-                prevButton.transform.localPosition.z
+                0
             );
 
+        bool isLastLine =
+            currentIndex >= dialogueLines.Count - 1;
+
+        // Next
+        nextButton.transform.localPosition =
+            new Vector3(
+                startX + 160f,
+                buttonY,
+                0
+            );
+
+        // End
         endButton.transform.localPosition =
             new Vector3(
-                endButton.transform.localPosition.x,
+                startX + 160f,
                 buttonY,
-                endButton.transform.localPosition.z
+                0
             );
     }
 }
