@@ -11,6 +11,7 @@ TagManager:
   - badleaf
   - idle
   - Correct
+  - MouseFollower
   layers:
   - Default
   - TransparentFX
