@@ -17,6 +17,9 @@ public class TriggerFadeSwitcher : MonoBehaviour
     [Header("Progress Manager")]
     public TriggerProgressManager progressManager;
 
+    [Header("Sequential Word Fader")]
+    public SequentialWordFader wordFader;
+
     private bool hasTriggered = false;
     private bool isHovering = false;
 
@@ -77,6 +80,11 @@ public class TriggerFadeSwitcher : MonoBehaviour
         if (progressManager != null)
         {
             progressManager.RegisterTrigger();
+        }
+
+        if (wordFader != null)
+        {
+            wordFader.FadeNextWord();
         }
     }
 
