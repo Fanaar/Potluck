@@ -52,7 +52,6 @@ public class StoveKnob : MonoBehaviour
             angle += 360f;
         }
 
-        // Clamp rotation
         angle = Mathf.Clamp(angle, minRotation, maxRotation);
 
         Quaternion targetRotation =
@@ -73,10 +72,10 @@ public class StoveKnob : MonoBehaviour
             transform.rotation =
                 Quaternion.Euler(0, 0, 0);
 
-            // START CINEMATIC
-            if (cinematic != null)
+            if (KitchenState.Instance != null)
             {
-                cinematic.StartCinematic();
+                KitchenState.Instance.stoveOff = true;
+                KitchenState.Instance.CheckCompletion();
             }
         }
     }

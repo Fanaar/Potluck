@@ -210,6 +210,12 @@ public class PanLidDrag : MonoBehaviour
             yield return null;
         }
 
+        if (KitchenState.Instance != null)
+        {
+            KitchenState.Instance.lidRemoved = true;
+            KitchenState.Instance.CheckCompletion();
+        }
+
         Destroy(gameObject);
     }
 }

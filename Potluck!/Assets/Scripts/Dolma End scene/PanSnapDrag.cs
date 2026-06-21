@@ -16,6 +16,8 @@ public class PanSnapDrag : MonoBehaviour
     public float snapDistance = 1.5f;
     public float snapDuration = 0.25f;
 
+    [Header("Pan State")]
+    public bool countAsPanRemoved = true;
     private Camera cam;
 
     private Vector3 offset;
@@ -185,6 +187,16 @@ public class PanSnapDrag : MonoBehaviour
         transform.rotation = targetRot;
 
         isSnapped = snappedState;
+
+        if (snappedState && countAsPanRemoved)
+        {
+            if (KitchenState.Instance != null)
+            {
+                KitchenState.Instance.panRemoved = true;
+                KitchenState.Instance.CheckCompletion();
+            }
+        }
+
         isMoving = false;
     }
 }
