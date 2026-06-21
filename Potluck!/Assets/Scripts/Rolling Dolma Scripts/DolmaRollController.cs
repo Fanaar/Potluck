@@ -36,6 +36,7 @@ public class DolmaRollController : MonoBehaviour
 
     int state = 0;
     bool isTransitioning = false;
+    bool hasStuffing = false;
 
     void Start()
     {
@@ -54,6 +55,9 @@ public class DolmaRollController : MonoBehaviour
 
     void OnMouseEnter()
     {
+        if (!hasStuffing)
+            return;
+
         if (state < 4)
         {
             CustomCursorUI.Instance.SetHover();
@@ -67,7 +71,11 @@ public class DolmaRollController : MonoBehaviour
 
     void OnMouseDown()
     {
-        if (state >= 4 || isTransitioning) return;
+        if (!hasStuffing)
+            return;
+
+        if (state >= 4 || isTransitioning)
+            return;
 
         dragStart = Input.mousePosition;
 
@@ -76,7 +84,11 @@ public class DolmaRollController : MonoBehaviour
 
     void OnMouseUp()
     {
-        if (state >= 4 || isTransitioning) return;
+        if (!hasStuffing)
+            return;
+
+        if (state >= 4 || isTransitioning)
+            return;
 
         Vector2 dragEnd = Input.mousePosition;
         Vector2 dir = dragEnd - dragStart;
@@ -88,7 +100,11 @@ public class DolmaRollController : MonoBehaviour
 
     void ProcessDrag(Vector2 dir)
     {
-        if (state >= 4 || isTransitioning) return;
+        if (!hasStuffing)
+            return;
+
+        if (state >= 4 || isTransitioning)
+            return;
 
         // STEP 1: bottom fold
         if (state == 0 && dir.y > 50)
@@ -243,8 +259,18 @@ public class DolmaRollController : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    public bool HasStuffing()
+    {
+        return hasStuffing;
+    }
+
     public void AddStuffing()
     {
+        if (hasStuffing)
+            return;
+
+        hasStuffing = true;
+
         StartCoroutine(CrossFadeToSprite(
             leafWithStuffing,
             stuffingClip

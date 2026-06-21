@@ -6,18 +6,22 @@ public class StuffingDrop : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Leaf"))
-        {
-            DolmaRollController roll = other.GetComponent<DolmaRollController>();
+        if (!other.CompareTag("Leaf"))
+            return;
 
-            if (roll != null)
-            {
-                roll.AddStuffing();
-                UIQuestionPreview.Instance.LockQuestion();
-            }
+        DolmaRollController roll = other.GetComponent<DolmaRollController>();
 
-            wasPlaced = true;
-            Destroy(gameObject);
-        }
+        if (roll == null)
+            return;
+
+        // probeer stuffing toe te voegen
+        if (roll.HasStuffing())
+            return;
+
+        roll.AddStuffing();
+        UIQuestionPreview.Instance.LockQuestion();
+
+        wasPlaced = true;
+        Destroy(gameObject);
     }
 }
