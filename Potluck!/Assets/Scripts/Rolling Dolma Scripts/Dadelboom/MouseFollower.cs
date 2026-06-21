@@ -10,6 +10,8 @@ public class MouseFollower : MonoBehaviour
 
     void Start()
     {
+        Cursor.visible = false;
+
         if (startPoint != null)
         {
             transform.position = startPoint.position;

@@ -11,6 +11,10 @@ public class FinishBranchScene : MonoBehaviour
     public CanvasGroup fadeCanvasGroup;
     public float fadeDuration = 1f;
 
+    [Header("Transition Sound")]
+    public AudioSource audioSource;
+    public AudioClip transitionSound;
+
     public void FinishScene()
     {
         StartCoroutine(FadeAndLoad());
@@ -20,15 +24,19 @@ public class FinishBranchScene : MonoBehaviour
     {
         float timer = 0f;
 
+        // transition geluid afspelen
+        if (audioSource != null && transitionSound != null)
+        {
+            audioSource.PlayOneShot(transitionSound);
+        }
+
         // fade ambience tegelijk starten
-        SceneAmbience ambience =
-            FindObjectOfType<SceneAmbience>();
+        SceneAmbience ambience = FindObjectOfType<SceneAmbience>();
 
         if (ambience != null)
         {
             ambience.FadeOutAndStop();
         }
-
 
         // fade naar zwart
         while (timer < fadeDuration)

@@ -151,6 +151,8 @@ MonoBehaviour:
   dolmaSceneName: End Cooking Dolma
   fadeCanvasGroup: {fileID: 1501657390}
   fadeDuration: 2
+  audioSource: {fileID: 0}
+  transitionSound: {fileID: 0}
 --- !u!4 &14165424
 Transform:
   m_ObjectHideFlags: 0
