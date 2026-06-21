@@ -143,7 +143,13 @@ public class StoveCinematic : MonoBehaviour
         // Small pause after full black
         yield return new WaitForSeconds(1f);
 
-        // Load title screen
+        if (GameState.Instance != null)
+        {
+            Debug.Log("Destroying GameState");
+            Destroy(GameState.Instance.gameObject);
+            GameState.Instance = null;
+        }
+
         SceneManager.LoadScene(titleSceneName);
     }
 }

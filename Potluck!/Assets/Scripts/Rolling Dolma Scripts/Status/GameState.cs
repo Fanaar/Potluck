@@ -20,4 +20,8 @@ public class GameState : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
     }
+    void Start()
+    {
+        Debug.Log("GameState Created");
+    }
 }
