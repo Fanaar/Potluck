@@ -25,13 +25,24 @@ public class Basic2DController : MonoBehaviour
         if (isStopped)
         {
             animator.SetBool("isWalking", false);
+
+            // Klik om weer verder te lopen
+            if (Input.GetMouseButtonDown(0))
+            {
+                isStopped = false;
+            }
+
             return;
         }
 
-        // Altijd naar rechts lopen
         animator.SetBool("isWalking", true);
 
-        visual.localScale = new Vector3(Mathf.Abs(originalScale.x), originalScale.y, originalScale.z);
+        // Zorg dat het karakter naar rechts kijkt
+        visual.localScale = new Vector3(
+            Mathf.Abs(originalScale.x),
+            originalScale.y,
+            originalScale.z
+        );
     }
 
     void FixedUpdate()
@@ -53,7 +64,6 @@ public class Basic2DController : MonoBehaviour
         }
     }
 
-    // Gebruik deze als je triggers gebruikt i.p.v. colliders
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("idle"))
