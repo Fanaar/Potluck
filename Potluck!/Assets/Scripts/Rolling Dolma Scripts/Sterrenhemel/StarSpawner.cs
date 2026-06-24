@@ -41,6 +41,13 @@ public class StarSpawner : MonoBehaviour
     [Header("Finish Delay")]
     public float delayBeforeFinish = 2f;
 
+    [Header("Moon Text Color Fade")]
+    public TextMeshProUGUI[] textsToColorFade;
+
+    public Color targetTextColor = Color.white;
+
+    public float colorFadeDuration = 2f;
+
     void Start()
     {
         foreach (TextMeshProUGUI txt in textsToFade)
@@ -172,6 +179,14 @@ public class StarSpawner : MonoBehaviour
 
         float timer = 0f;
 
+        foreach (var txt in textsToColorFade)
+        {
+            if (txt != null)
+            {
+                StartCoroutine(FadeTextColor(txt));
+            }
+        }
+
         // ===== MOVE + ROTATE =====
         while (timer < longestDuration)
         {
@@ -234,5 +249,27 @@ public class StarSpawner : MonoBehaviour
         {
             finishScene.FinishScene();
         }
+    }
+
+    IEnumerator FadeTextColor(TextMeshProUGUI text)
+    {
+        Color startColor = text.color;
+
+        float timer = 0f;
+
+        while (timer < colorFadeDuration)
+        {
+            timer += Time.deltaTime;
+
+            text.color = Color.Lerp(
+                startColor,
+                targetTextColor,
+                timer / colorFadeDuration
+            );
+
+            yield return null;
+        }
+
+        text.color = targetTextColor;
     }
 }

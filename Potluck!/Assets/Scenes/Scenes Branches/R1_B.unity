@@ -1325,6 +1325,12 @@ MonoBehaviour:
     moveDuration: 3
     rotationSpeed: 0
   delayBeforeFinish: 3
+  textsToColorFade:
+  - {fileID: 1788893106}
+  - {fileID: 1816360506}
+  - {fileID: 1881187688}
+  targetTextColor: {r: 0.17186841, g: 0.13980062, b: 0.3207547, a: 1}
+  colorFadeDuration: 2
 --- !u!4 &1774141397
 Transform:
   m_ObjectHideFlags: 0
