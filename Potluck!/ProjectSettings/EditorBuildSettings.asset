@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Titelscherm.unity
     guid: efaf7c82264ab11439af55fe5b70ebb9
   - enabled: 1
-    path: Assets/Scenes/Controls/Controls 1.unity
+    path: Assets/Scenes/Controls 1.unity
     guid: 49f6d9dc22ff83e4db4933c17eb58740
   - enabled: 1
     path: Assets/Scenes/Invitation Fanaar.unity
