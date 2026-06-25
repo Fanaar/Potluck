@@ -14,31 +14,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   responses:
   - lines:
-    - text: I think I really felt it when I left Schiphol.
+    - text: i think i really felt it when i left schiphol.
       sprite: {fileID: 21300000, guid: b8340e73f8b75fc49872a5baa48529cf, type: 3}
     - text: Everything was so green, almost too green.
       sprite: {fileID: 21300000, guid: 5b069b0162cb57a42b571b35bdd5f1f7, type: 3}
-    - text: Everywhere around us was green, while I was used to yellow in Iraq.
+    - text: Everywhere around us was green, while i was used to yellow in iraq.
       sprite: {fileID: 21300000, guid: 56ae68dde5e202442af20615dcf168b2, type: 3}
-    - text: It immediately felt different, like I was in another world.
+    - text: It immediately felt different, like i was in another world.
       sprite: {fileID: 21300000, guid: 5a9373ce436dddd41b08b8d197238231, type: 3}
-    - text: On that first day, I saw an elderly woman riding a bicycle and my heart
+    - text: On that first day, i saw an elderly woman riding a bicycle and my heart
         started beating faster.
       sprite: {fileID: 21300000, guid: 52c1687365c86714b9bfabd17cecca48, type: 3}
-    - text: I honestly thought if she falls now, she will die, because where I come
+    - text: i honestly thought if she falls now, she will die, because where i come
         from, older women did not do things like that at all.
       sprite: {fileID: 21300000, guid: 32a04d723892c674fb180f1635571ff1, type: 3}
   - lines:
-    - text: The first time I had to leave Iraq, I went to Iran.
+    - text: the first time i had to leave Iraq, i went to Iran.
       sprite: {fileID: 21300000, guid: b8340e73f8b75fc49872a5baa48529cf, type: 3}
     - text: Because we were Kurds and connected to the peshmerga, we were expelled
         from the country.
       sprite: {fileID: 21300000, guid: 5b069b0162cb57a42b571b35bdd5f1f7, type: 3}
-    - text: I was ten years old at the time, and they are not pleasant memories.
+    - text: i was ten years old at the time, and they are not pleasant memories.
       sprite: {fileID: 21300000, guid: 56ae68dde5e202442af20615dcf168b2, type: 3}
-    - text: But there was not much to do there, so I started helping with cooking.
+    - text: But there was not much to do there, so i started helping with cooking.
       sprite: {fileID: 21300000, guid: 5a9373ce436dddd41b08b8d197238231, type: 3}
-    - text: I learned how to fill kobeh and how to knead bread.
+    - text: i learned how to fill kobeh and how to knead bread.
       sprite: {fileID: 21300000, guid: 52c1687365c86714b9bfabd17cecca48, type: 3}
-    - text: That was the first time I really felt like I could help.
+    - text: that was the first time I really felt like i could help.
       sprite: {fileID: 21300000, guid: 32a04d723892c674fb180f1635571ff1, type: 3}

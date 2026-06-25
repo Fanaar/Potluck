@@ -14,33 +14,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   responses:
   - lines:
-    - text: "I especially miss my mother\u2019s cooking, it was truly the best."
+    - text: "i especially miss my mother\u2019s cooking, it was truly the best."
       sprite: {fileID: 21300000, guid: b8340e73f8b75fc49872a5baa48529cf, type: 3}
-    - text: The fruit tasted so much better there too.
+    - text: the fruit tasted so much better there too.
       sprite: {fileID: 21300000, guid: 5b069b0162cb57a42b571b35bdd5f1f7, type: 3}
     - text: "Here you don\u2019t have everything, and what you do have often has
         less flavor."
       sprite: {fileID: 21300000, guid: 56ae68dde5e202442af20615dcf168b2, type: 3}
-    - text: I often think about tamr al iraqi, those dates from back then.
+    - text: i often think about tamr al iraqi, those dates from back then.
       sprite: {fileID: 21300000, guid: 5a9373ce436dddd41b08b8d197238231, type: 3}
     - text: We had a date palm, and every year a farmer would come to harvest it.
       sprite: {fileID: 21300000, guid: 52c1687365c86714b9bfabd17cecca48, type: 3}
-    - text: When he climbed the tree, I would secretly watch from the roof because
-        I thought it was so cool.
+    - text: When he climbed the tree, i would secretly watch from the roof because
+        i thought it was so cool.
       sprite: {fileID: 21300000, guid: 32a04d723892c674fb180f1635571ff1, type: 3}
   - lines:
-    - text: I miss my job, my friends, my family, but most of all my mother.
+    - text: i miss my job, my friends, my family, but most of all my mother.
       sprite: {fileID: 21300000, guid: b8340e73f8b75fc49872a5baa48529cf, type: 3}
-    - text: I miss the streets of Baghdad and how alive everything felt there.
+    - text: i miss the streets of Baghdad and how alive everything felt there.
       sprite: {fileID: 21300000, guid: 5b069b0162cb57a42b571b35bdd5f1f7, type: 3}
     - text: When you went outside, there was always something to see, the chaos of
         cars, the honking, the sound of people laughing.
       sprite: {fileID: 21300000, guid: 56ae68dde5e202442af20615dcf168b2, type: 3}
-    - text: It felt like the street was always alive, full of energy.
+    - text: it felt like the street was always alive, full of energy.
       sprite: {fileID: 21300000, guid: fcfa58a935104984581fcd80421f8dde, type: 3}
-    - text: I miss the feeling of home, especially the evenings on the roof where
+    - text: i miss the feeling of home, especially the evenings on the roof where
         we would sprinkle water to cool things down and then sleep under the stars.
       sprite: {fileID: 21300000, guid: 52c1687365c86714b9bfabd17cecca48, type: 3}
-    - text: The moon seemed bigger there, and in the morning you could feel a gentle
-        breeze, and sometimes I think about how we used to walk along the Tigris.
+    - text: the moon seemed bigger there, and in the morning you could feel a gentle
+        breeze, and sometimes i think about how we used to walk along the Tigris.
       sprite: {fileID: 21300000, guid: 32a04d723892c674fb180f1635571ff1, type: 3}

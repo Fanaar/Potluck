@@ -3580,10 +3580,10 @@ MonoBehaviour:
   messageDuration: 3
   textFadeDuration: 0.25
   badLeafMessages:
-  - The edges are damaged. It might tear while folding.
+  - the edges are damaged. It might tear while folding.
   - Notice these holes? Bugs have already eaten through this leaf.
-  - See the yellowing? This leaf may be too tough for rolling.
-  - This one feels a little too dry and fragile.
+  - see the yellowing? this leaf may be too tough for rolling.
+  - this one feels a little too dry and fragile.
   badLeafPreviewImage: {fileID: 853856332}
   sceneFadeCanvasGroup: {fileID: 1759461332}
   sceneFadeDuration: 1
