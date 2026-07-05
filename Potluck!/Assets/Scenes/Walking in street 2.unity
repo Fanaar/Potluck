@@ -4524,7 +4524,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1507d1efb77385b45b1d35b33b37b884, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteToFade: {fileID: 1623487950}
+  spriteToFade: {fileID: 1873567598}
   fadeDuration: 1
   isLastTrigger: 1
   fadePanel: {fileID: 1165461064}
@@ -7547,7 +7547,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1507d1efb77385b45b1d35b33b37b884, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteToFade: {fileID: 889006906}
+  spriteToFade: {fileID: 1623487950}
   fadeDuration: 1
   isLastTrigger: 0
   fadePanel: {fileID: 0}
